@@ -4,6 +4,7 @@ import 'package:flutter_advanced/pages/demo2.dart';
 import 'package:flutter_advanced/pages/demo3.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
+import 'package:flutter_advanced/routes/routes.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -55,6 +56,8 @@ class Home extends StatelessWidget {
               ),
             ),
           );
+        } else {
+          Navigator.pushNamed(context, '/demo${routeList[index] + 1}');
         }
       },
       style: ButtonStyle(

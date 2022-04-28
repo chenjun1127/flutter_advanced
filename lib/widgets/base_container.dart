@@ -12,6 +12,7 @@ class BaseContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: padding,
+      width: double.infinity,
       child: child ?? const SizedBox.shrink(),
     );
   }

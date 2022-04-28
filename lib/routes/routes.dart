@@ -1,16 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/pages/demo1.dart';
+import 'package:flutter_advanced/pages/demo2.dart';
+import 'package:flutter_advanced/pages/demo3.dart';
+import 'package:flutter_advanced/pages/demo4.dart';
 import 'package:flutter_advanced/pages/main_page.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
 
-final List<int> list = List<int>.generate(baseRoute.values.length, (int index) => index);
+final List<int> routeList = List<int>.generate(baseRoute.values.length, (int index) => index);
 
 typedef WidgetBuilder = Widget Function(BuildContext context, {dynamic arguments});
 
 final Map<String, WidgetBuilder> baseRoute = <String, WidgetBuilder>{
   "/demo1": (BuildContext context, {dynamic arguments}) => const Demo1(),
+  "/demo2": (BuildContext context, {dynamic arguments}) => const Demo2(),
+  "/demo3": (BuildContext context, {dynamic arguments}) => const Demo3(),
+  "/demo4": (BuildContext context, {dynamic arguments}) => const Demo4(),
 };
 
 class Routes {
