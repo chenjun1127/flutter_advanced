@@ -21,12 +21,12 @@ class FadeRouter<T> extends PageRouteBuilder<T> {
 }
 
 ///支持带参数的路由动画
-class BottomToTopRoute<T> extends PageRouteBuilder<T> {
-  BottomToTopRoute({RouteSettings? settings, this.child, this.duration = 200, this.curve = Curves.fastOutSlowIn})
+class BottomToTopRouter<T> extends PageRouteBuilder<T> {
+  BottomToTopRouter(
+      {required this.builder, RouteSettings? settings, this.duration = 200, this.curve = Curves.fastOutSlowIn})
       : settings = settings ?? defaultSettings,
         super(
-          pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) =>
-              child!,
+          pageBuilder: builder,
           settings: settings,
           transitionDuration: Duration(milliseconds: duration),
           transitionsBuilder:
@@ -44,10 +44,10 @@ class BottomToTopRoute<T> extends PageRouteBuilder<T> {
     settings = const RouteSettings();
   }
 
-  final Widget? child;
   final int duration;
   static RouteSettings defaultSettings = const RouteSettings();
 
+  final RoutePageBuilder builder;
   @override
   RouteSettings settings;
   final Curve curve;

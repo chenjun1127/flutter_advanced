@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced/pages/demo2.dart';
 import 'package:flutter_advanced/pages/demo3.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
+import 'package:flutter_advanced/routes/route_type.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -30,18 +31,28 @@ class Home extends StatelessWidget {
     return TextButton(
       onPressed: () {
         if (index == 0) {
-          Navigator.pushNamed(context, '/demo1', arguments: <String, dynamic>{"name": "张三", "from": "普通路由传参数"});
+          Navigator.pushNamed(context, '/demo1', arguments: <String, dynamic>{
+            "name": "张三",
+            "from": "普通路由传参数",
+            "routeType": ROUTE_TYPE.bottomToTop,
+          });
         } else if (index == 1) {
           Navigator.push(context, FadeRouter<dynamic>(child: const Demo2(), duration: 200));
         } else if (index == 2) {
           Navigator.push(
             context,
-            BottomToTopRoute<dynamic>(
+            BottomToTopRouter<dynamic>(
+              builder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+                return const Demo3();
+              },
               settings: const RouteSettings(
-                name: "张三",
-                arguments: <String, dynamic>{"name": "张三", "from": "从下至少动画路由带参数"},
+                name: "/demo3",
+                arguments: <String, dynamic>{
+                  "name": "demo3",
+                  "from": "支持带参数的路由动画从下到上出现",
+                  "routeType": ROUTE_TYPE.bottomToTop,
+                },
               ),
-              child: const Demo3(),
             ),
           );
         }

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/pages/demo1.dart';
 import 'package:flutter_advanced/pages/main_page.dart';
+import 'package:flutter_advanced/routes/animate_route.dart';
+import 'package:flutter_advanced/routes/route_type.dart';
 
 final List<int> list = List<int>.generate(baseRoute.values.length, (int index) => index);
 
@@ -25,8 +27,19 @@ class Routes {
     final String name = settings.name ?? '';
     final Map<String, WidgetBuilder> routes = initRoutes();
     final WidgetBuilder? builder = routes[name];
+    final Object? arguments = settings.arguments;
     if (builder != null) {
       if (settings.arguments != null) {
+        if (arguments is Map) {
+          if (arguments['routeType'] == ROUTE_TYPE.bottomToTop) {
+            final Route<dynamic> route = BottomToTopRouter<dynamic>(
+                builder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+                  return builder(context, arguments: settings.arguments);
+                },
+                settings: settings);
+            return route;
+          }
+        }
         return MaterialPageRoute<dynamic>(
           builder: (BuildContext context) => builder(context, arguments: settings.arguments),
           settings: settings,
