@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/pages/demo2.dart';
+import 'package:flutter_advanced/pages/demo3.dart';
+import 'package:flutter_advanced/routes/animate_route.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,7 +30,20 @@ class Home extends StatelessWidget {
     return TextButton(
       onPressed: () {
         if (index == 0) {
-          Navigator.pushNamed(context, '/demo1', arguments: <String, dynamic>{"name": "张三"});
+          Navigator.pushNamed(context, '/demo1', arguments: <String, dynamic>{"name": "张三", "from": "普通路由传参数"});
+        } else if (index == 1) {
+          Navigator.push(context, FadeRouter<dynamic>(child: const Demo2(), duration: 200));
+        } else if (index == 2) {
+          Navigator.push(
+            context,
+            BottomToTopRoute<dynamic>(
+              settings: const RouteSettings(
+                name: "张三",
+                arguments: <String, dynamic>{"name": "张三", "from": "从下至少动画路由带参数"},
+              ),
+              child: const Demo3(),
+            ),
+          );
         }
       },
       style: ButtonStyle(
