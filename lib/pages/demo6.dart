@@ -8,6 +8,7 @@ class Demo6 extends StatefulWidget {
   @override
   State<Demo6> createState() => _Demo6State();
 }
+
 // addPostFrameCallback 是 StatefulWidget 渲染结束的回调，只会被调用一次，之后 StatefulWidget 需要刷新 UI 也不会被调用，
 class _Demo6State extends State<Demo6> {
   @override
