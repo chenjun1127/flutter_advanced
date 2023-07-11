@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/utils/debonce_throttle.dart';
+import 'package:flutter_advanced/utils/debounce_throttle.dart';
 
 class Demo11 extends StatefulWidget {
   const Demo11({Key? key}) : super(key: key);

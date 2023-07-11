@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/entity/counter.dart';
 import 'package:flutter_advanced/entity/user_info.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,12 @@ class _Demo12State extends State<Demo12> {
         create: (BuildContext context) {
           return UserInfoChanged();
         },
-        child: const ChangeNotifierTest(),
+        child: Column(
+          children: <Widget>[
+            const ChangeNotifierTest(),
+            ValueNotifierTest(),
+          ],
+        ),
       ),
     );
   }
@@ -86,5 +92,33 @@ class UserInfoChanged extends ChangeNotifier {
     _userInfo.name = name;
     _userInfo.age = age;
     notifyListeners();
+  }
+}
+
+class ValueNotifierTest extends StatelessWidget {
+  ValueNotifierTest({super.key});
+
+  final Counter counter = Counter();
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<int>(
+      valueListenable: counter.count,
+      builder: (BuildContext context, int value, Widget? child) {
+        return Column(
+          children: <Widget>[
+            Text('Count: $value'),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(value >= 5 ? Colors.blue : Colors.green),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
+              ),
+              onPressed: counter.add,
+              child: const Text('ValueNotifierTest'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
