@@ -120,6 +120,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
+  cj_kit:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "0.0.1-dev"
+      resolved-ref: "79af642e4136f222562e5fe3448dcecfb3adf13c"
+      url: "git@github.com:chenjun1127/flutter-cj-kit.git"
+    source: git
+    version: "0.0.1-dev"
   clock:
     dependency: transitive
     description:
@@ -169,6 +178,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.5"
+  date_format:
+    dependency: transitive
+    description:
+      name: date_format
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.7"
   fake_async:
     dependency: transitive
     description:
