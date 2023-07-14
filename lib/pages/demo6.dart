@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -21,7 +21,9 @@ class _Demo6State extends State<Demo6> {
 
   @override
   void initState() {
-    SchedulerBinding.instance.addPostFrameCallback((_) => {print("渲染完成")});
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      JLogger.i("渲染完成");
+    });
     super.initState();
   }
 }

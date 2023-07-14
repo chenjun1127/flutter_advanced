@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cj_kit/logger/j_logger.dart';
 
 class ThrottleDebounce {
   Timer? _timer;
@@ -51,7 +52,7 @@ class ThrottleDebounce {
   void isActive({bool isUpDate = true}) {
     if (_timer?.isActive ?? false) {
       if (isUpDate) {
-        print('-- isActive 取消的时候执行一次  ${function != null}');
+        JLogger.i('-- isActive 取消的时候执行一次  ${function != null}');
         function?.call();
       }
       function = null;
@@ -62,11 +63,9 @@ class ThrottleDebounce {
   void cancel({bool isUpDate = false}) {
     _timer?.cancel();
     if (isUpDate) {
-      print('----- 取消的时候执行一次  ${function != null}');
+      JLogger.i('----- 取消的时候执行一次  ${function != null}');
       function?.call();
     }
     function = null;
   }
 }
-
-

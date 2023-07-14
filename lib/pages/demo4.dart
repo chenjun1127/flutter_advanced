@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/entity/user_info.dart';
 import 'package:flutter_advanced/pages/demo5.dart';

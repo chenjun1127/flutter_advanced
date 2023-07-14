@@ -1,3 +1,4 @@
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/utils/debounce_throttle.dart';
 
@@ -13,6 +14,7 @@ class _Demo11State extends State<Demo11> {
 
   @override
   Widget build(BuildContext context) {
+    JLogger.i("AAAAAAAA");
     return Scaffold(
       appBar: AppBar(
         title: const Text('节流防抖'),
@@ -31,7 +33,7 @@ class _Demo11State extends State<Demo11> {
                   waitTime: 1000,
                   lastWaitTime: 1000,
                   function: ([dynamic value]) {
-                    print("添加1秒节流防抖${DateTime.now().millisecondsSinceEpoch},$value");
+                    JLogger.i("添加1秒节流防抖${DateTime.now().millisecondsSinceEpoch},$value");
                   },
                 );
               },
@@ -44,7 +46,7 @@ class _Demo11State extends State<Demo11> {
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
               ),
               onPressed: () {
-                print("未添加节流防抖${DateTime.now().millisecondsSinceEpoch}");
+                JLogger.i("未添加节流防抖${DateTime.now().millisecondsSinceEpoch}");
               },
               child: const Text('未添加节流防抖'),
             ),

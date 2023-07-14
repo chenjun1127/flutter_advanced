@@ -1,3 +1,4 @@
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/entity/counter.dart';
 import 'package:flutter_advanced/entity/user_info.dart';
@@ -68,7 +69,7 @@ class _ChangeNotifierTestState extends State<ChangeNotifierTest> {
   @override
   void initState() {
     _userInfoChanged.addListener(() {
-      print("userInfoChanged addListener:${_userInfoChanged.userInfo}");
+      JLogger.i("userInfoChanged addListener:${_userInfoChanged.userInfo}");
       setState(() {
         currentUserInfo = _userInfoChanged.userInfo;
       });

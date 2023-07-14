@@ -1,4 +1,5 @@
 import 'package:cj_kit/cj_kit.dart';
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/pages/main_page.dart';
@@ -15,10 +16,8 @@ void main() {
       // 调整Flutter中图片缓存的最大大小,图片缓存的最大数量为200张图,图片缓存的最大字节大小为40MB。
       PaintingBinding.instance.imageCache.maximumSize = 200;
       PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
+      JLogger.init();
     },
-    logCallback: (String line){
-
-    }
   );
 }
 

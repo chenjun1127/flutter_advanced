@@ -1,3 +1,4 @@
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/widgets/semi_circle_slider.dart';
 
@@ -19,7 +20,7 @@ class _Demo13State extends State<Demo13> {
         color: Colors.red,
         child: SemiCircleSlider(
           onChange: (double value) {
-            print("--当前进度为:$value");
+            JLogger.i("--当前进度为:$value");
           },
         ),
       ),

@@ -1,19 +1,16 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_advanced/entity/device.dart';
+import 'package:flutter_advanced/pages/demo14.dart';
 import 'package:flutter_advanced/pages/demo2.dart';
 import 'package:flutter_advanced/pages/demo3.dart';
 import 'package:flutter_advanced/pages/not_found_page.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
 import 'package:flutter_advanced/routes/routes.dart';
+import 'package:flutter_advanced/store/device_store.dart';
 import 'package:flutter_advanced/store/root_store.dart';
-
-import '../entity/device.dart';
-import '../pages/demo14.dart';
-import '../store/device_store.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);

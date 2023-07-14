@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image/image.dart' as img;
@@ -51,10 +51,10 @@ class Demo10 extends StatelessWidget {
     final http.Response response = await http.get(Uri.parse(url));
     // Uint8List t= t.bodyBytes;
     final String imageName = path.basenameWithoutExtension(url);
-    debugPrint("图片名称=====$imageName");
+    JLogger.i("图片名称=====$imageName");
     final Directory appDir = await getApplicationSupportDirectory();
     final String localPath = path.join(appDir.path, '$imageName.bmp');
-    debugPrint("存储路径=====$appDir");
+    JLogger.i("存储路径=====$appDir");
     // Downloading
     final File imageFile = File(localPath);
     final img.Image? _img = img.decodeImage(response.bodyBytes);

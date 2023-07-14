@@ -1,9 +1,9 @@
+
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/entity/device.dart';
 import 'package:flutter_advanced/store/device_store.dart';
-import 'package:flutter_advanced/store/root_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx/src/api/observable_collections.dart';
 
 class Demo14 extends StatefulWidget {
   const Demo14({super.key, this.store});
@@ -47,7 +47,7 @@ class _Demo14State extends State<Demo14> {
   }
 
   void handleChange(String deviceId) {
-    print("观察UI是否刷新");
+    JLogger.i("观察UI是否刷新:$deviceId");
     widget.store?.updateDeviceById(deviceId);
   }
 
@@ -82,5 +82,11 @@ class _Demo14State extends State<Demo14> {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    JLogger.i("initState:111111111111");
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/entity/user_info.dart';
 import 'package:flutter_advanced/stream/stream_controller.dart';

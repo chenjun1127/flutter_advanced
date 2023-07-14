@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/utils/screen_adapt.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';

@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 
 typedef VoidDoubleCallBack = void Function(double progress);
@@ -85,7 +86,7 @@ class SemiCircleSliderState extends State<SemiCircleSlider> {
     final double dx = position.dx - centerX;
     final double dy = position.dy - centerY;
     final double distance = math.sqrt(dx * dx + dy * dy); // 计算手势点与圆环中心的距离
-    print("distance----$distance,$radius");
+    JLogger.i("distance----$distance,$radius");
     if (distance >= radius && distance <= widget.radius! && isAngleInRange(dx, dy)) {
       return true;
     } else {
@@ -130,8 +131,8 @@ class SemiCircleSliderState extends State<SemiCircleSlider> {
       _progress = value + (1 - 0.875);
     }
     final double progress = _progress / (0.125 + 0.625) * 100;
-    print("当前进度为：$progress");
-    print("--value==2=$value,angle====$angle");
+    JLogger.i("当前进度为：$progress");
+    JLogger.i("--value==2=$value,angle====$angle");
     widget.onChange?.call(progress);
   }
 

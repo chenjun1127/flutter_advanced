@@ -2,10 +2,8 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:flutter/cupertino.dart';
+import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:image/image.dart' as img;
 
 class Demo9 extends StatefulWidget {
@@ -62,7 +60,7 @@ class _Demo9State extends State<Demo9> {
       x = (x1 - widget.pointCircleSize! ~/ 2).toDouble();
       y = (y1 - widget.pointCircleSize! ~/ 2).toDouble();
     });
-    debugPrint("计算得到坐标:x:$x,y:$y,currentSaturation:$currentSaturation,realRadius:$realRadius");
+    JLogger.i("计算得到坐标:x:$x,y:$y,currentSaturation:$currentSaturation,realRadius:$realRadius");
     await loadImg(context);
     await _updateColor();
   }
@@ -186,7 +184,7 @@ class _Demo9State extends State<Demo9> {
     } else if (distance < smallRadius + pointRadius) {
       radius = smallRadius + pointRadius;
     }
-    debugPrint("centerX:$centerX,centerY:$centerY:pointRadius:$pointRadius:radius:$radius");
+    JLogger.i("centerX:$centerX,centerY:$centerY:pointRadius:$pointRadius:radius:$radius");
     Offset currentPosition;
     if (radius != null) {
       //触摸点位移到圆心坐标
@@ -247,7 +245,7 @@ class _Demo9State extends State<Demo9> {
     } else {
       ///更新S的值
       currentSaturation = (d - smallCircleRadius) / circleThickness * (100 - 0) + widget.pointCircleSize! ~/ 2;
-      debugPrint("currentSaturation:$currentSaturation");
+      JLogger.i("currentSaturation:$currentSaturation");
       return rotation;
     }
   }
@@ -316,7 +314,7 @@ class _Demo9State extends State<Demo9> {
     setState(() {
       finalColor2 = pixelColor;
     });
-    debugPrint("=>:pixelColor:$pixelColor,finalColor:$finalColor,rotation:$currentAngle,saturation:$currentSaturation");
+    JLogger.i("=>:pixelColor:$pixelColor,finalColor:$finalColor,rotation:$currentAngle,saturation:$currentSaturation");
   }
 
   /// Uint32 编码过的像素颜色值（#AABBGGRR)转为（#AARRGGBB）

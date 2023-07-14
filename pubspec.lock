@@ -124,8 +124,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.1-dev"
-      resolved-ref: "79af642e4136f222562e5fe3448dcecfb3adf13c"
+      ref: HEAD
+      resolved-ref: "96a0d1c45a91684798af76916a69613d90690a6a"
       url: "git@github.com:chenjun1127/flutter-cj-kit.git"
     source: git
     version: "0.0.1-dev"
@@ -286,6 +286,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.3.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.18.1"
   io:
     dependency: transitive
     description:
@@ -314,6 +321,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.4.0"
   logging:
     dependency: transitive
     description:
