@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
         textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 18)),
         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       ),
-      child: Text(index.toString()),
+      child: Text((index + 1).toString()),
     );
   }
 
