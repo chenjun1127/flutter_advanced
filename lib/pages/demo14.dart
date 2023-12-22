@@ -1,4 +1,3 @@
-
 import 'package:cj_kit/logger/j_logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/entity/device.dart';

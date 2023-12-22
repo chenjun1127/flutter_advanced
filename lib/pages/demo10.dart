@@ -8,9 +8,14 @@ import 'package:image/image.dart' as img;
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
-class Demo10 extends StatelessWidget {
+class Demo10 extends StatefulWidget {
   const Demo10({Key? key}) : super(key: key);
 
+  @override
+  State<Demo10> createState() => _Demo10State();
+}
+
+class _Demo10State extends State<Demo10> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +40,7 @@ class Demo10 extends StatelessWidget {
                 backgroundColor: MaterialStateProperty.all(Colors.teal),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
               ),
-              onPressed: () {
-                readFile(context);
-              },
+              onPressed: readFile,
               child: const Text('读取图片'),
             ),
           ],
@@ -46,7 +49,7 @@ class Demo10 extends StatelessWidget {
     );
   }
 
-  Future<File?> downloadImg() async {
+  Future<void> downloadImg() async {
     const String url = 'https://live.staticflickr.com/65535/51509388947_4b5b9a36a4_b.jpg';
     final http.Response response = await http.get(Uri.parse(url));
     // Uint8List t= t.bodyBytes;
@@ -62,25 +65,27 @@ class Demo10 extends StatelessWidget {
     await imageFile.writeAsBytes(a);
   }
 
-  Future<void> readFile(BuildContext context) async {
+  Future<void> readFile() async {
     final Directory appDir = await getApplicationSupportDirectory();
     final Uint8List imageData = await File(path.join(appDir.path, '51509388947_4b5b9a36a4_b.bmp')).readAsBytes();
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            '读取保存的图片',
-            style: TextStyle(
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w300,
-              color: Theme.of(context).primaryColor,
-              letterSpacing: 1.1,
+    if (context.mounted) {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              '读取保存的图片',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w300,
+                color: Theme.of(context).primaryColor,
+                letterSpacing: 1.1,
+              ),
             ),
-          ),
-          content: Image.memory(Uint8List.view(imageData.buffer)),
-        );
-      },
-    );
+            content: Image.memory(Uint8List.view(imageData.buffer)),
+          );
+        },
+      );
+    }
   }
 }

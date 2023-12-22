@@ -70,23 +70,25 @@ class _Demo9State extends State<Demo9> {
     return Scaffold(
       appBar: AppBar(title: const Text("CustomPainter Color")),
       persistentFooterButtons: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              color: finalColor2,
-              height: 36,
-              width: 50,
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text("当前生成颜色:$finalColor2"),
+            Row(
+              children: <Widget>[
+                Container(
+                  color: finalColor2,
+                  height: 36,
+                  width: 50,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text("当前生成颜色:$finalColor2"),
+                ),
+              ],
             ),
             ElevatedButton(
+              onPressed: showImage,
               child: const Text('查看canvas生成的图片'),
-              onPressed: () {
-                showImage(context);
-              },
             ),
           ],
         ),
@@ -324,25 +326,27 @@ class _Demo9State extends State<Demo9> {
     return (argbColor & 0xFF00FF00) | (b << 16) | r;
   }
 
-  Future<void> showImage(BuildContext context) async {
+  Future<void> showImage() async {
     final ByteData? pngBytes = await _image?.toByteData(format: ui.ImageByteFormat.png);
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Canvas绘制生成的图片',
-            style: TextStyle(
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.w300,
-              color: Theme.of(context).primaryColor,
-              letterSpacing: 1.1,
+    if (context.mounted) {
+      return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'Canvas绘制生成的图片',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w300,
+                color: Theme.of(context).primaryColor,
+                letterSpacing: 1.1,
+              ),
             ),
-          ),
-          content: Image.memory(Uint8List.view(pngBytes!.buffer)),
-        );
-      },
-    );
+            content: Image.memory(Uint8List.view(pngBytes!.buffer)),
+          );
+        },
+      );
+    }
   }
 }
 
