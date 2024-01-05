@@ -45,6 +45,7 @@ dependencies:
   cj_kit:
     git:
       url: git@github.com:chenjun1127/flutter-cj-kit.git
+  rect_getter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
