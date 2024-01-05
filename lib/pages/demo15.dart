@@ -1,13 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/store/device_store.dart';
 import 'package:rect_getter/rect_getter.dart';
 
 class Demo15 extends StatefulWidget {
-  const Demo15({super.key, this.store});
-
-  final DeviceStore? store;
+  const Demo15({super.key});
 
   @override
   State<Demo15> createState() => _Demo15State();
@@ -37,6 +34,7 @@ class _Demo15State extends State<Demo15> {
               color: Colors.primaries[index % Colors.primaries.length],
               child: SizedBox(
                 width: 100,
+
                 /// 利用index创建伪随机高度的条目
                 height: 50.0 + ((27 * index) % 15) * 3.14,
                 child: Center(

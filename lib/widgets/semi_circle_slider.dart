@@ -219,6 +219,15 @@ class _SliderPainter extends CustomPainter {
   }
 
   @override
+  bool? hitTest(Offset position) {
+    // 例如，检查 position 是否在某个区域内
+    //点击位置到圆心距离
+    final double distance =
+        math.sqrt(math.pow(circleRadius - position.dx, 2) + math.pow(circleRadius - position.dy, 2));
+    return distance <= circleRadius && distance >= circleRadius - thickness;
+  }
+
+  @override
   bool shouldRepaint(_SliderPainter oldDelegate) {
     return oldDelegate.value != value ||
         oldDelegate.thickness != thickness ||
