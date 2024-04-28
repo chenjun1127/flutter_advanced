@@ -374,15 +374,15 @@ class CircleColorPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // final Rect rect = Offset.zero & size;
-    final Paint _paint = Paint()
+    final Paint paint1 = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 1
       ..color = Colors.black;
-    final Paint _paint2 = Paint()
+    final Paint paint2 = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 1
       ..color = Colors.black;
-    final Paint _paint3 = Paint()
+    final Paint paint3 = Paint()
       ..style = PaintingStyle.fill
       ..strokeWidth = 0
       ..color = Colors.black;
@@ -397,15 +397,15 @@ class CircleColorPainter extends CustomPainter {
     );
 
     final Rect rect = Rect.fromLTWH(0, 0, radius! * 2, radius! * 2);
-    _paint.shader = gradient.createShader(rect);
+    paint1.shader = gradient.createShader(rect);
 
-    _paint2.shader = gradient2.createShader(rect);
+    paint2.shader = gradient2.createShader(rect);
     //主色盘渐变
-    canvas.drawCircle(center!, radius!, _paint);
+    canvas.drawCircle(center!, radius!, paint1);
     //白色透明渐变
-    canvas.drawCircle(center!, radius!, _paint2);
+    canvas.drawCircle(center!, radius!, paint2);
     //黑色小圆
-    canvas.drawCircle(center!, smallRadius!, _paint3);
+    canvas.drawCircle(center!, smallRadius!, paint3);
   }
 
   @override

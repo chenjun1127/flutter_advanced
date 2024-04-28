@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 
 part 'root_store.g.dart';
 
+//ignore: library_private_types_in_public_api
 class RootStore = _RootStore with _$RootStore;
 
 final RootStore rootStore = RootStore();

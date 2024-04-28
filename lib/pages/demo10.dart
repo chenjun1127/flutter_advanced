@@ -60,8 +60,8 @@ class _Demo10State extends State<Demo10> {
     JLogger.i("存储路径=====$appDir");
     // Downloading
     final File imageFile = File(localPath);
-    final img.Image? _img = img.decodeImage(response.bodyBytes);
-    final List<int> a = img.encodeBmp(_img!);
+    final img.Image? imageData = img.decodeImage(response.bodyBytes);
+    final List<int> a = img.encodeBmp(imageData!);
     await imageFile.writeAsBytes(a);
   }
 

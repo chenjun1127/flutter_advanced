@@ -195,23 +195,23 @@ class _SemiCircleSlider2State extends State<SemiCircleSlider2> {
     // 将角度转换为0到1的范围
     value = widget.isRtl ? 0.5 - angle / (2 * math.pi) + 0.5 : angle / (2 * math.pi) + 0.5;
     // 当前进度
-    double _progress = 0;
+    double currentProgress = 0;
     if (value >= 0.875) {
-      _progress = value - 0.875;
+      currentProgress = value - 0.875;
     } else if (value > 0 && value <= 0.625) {
-      _progress = value + (1 - 0.875);
+      currentProgress = value + (1 - 0.875);
     }
-    final double progress = _progress / (0.125 + 0.625) * 100;
+    final double progress = currentProgress / (0.125 + 0.625) * 100;
     // print("--value==2=$value,angle====$progress");
     currentValue = progress;
     setValue(currentValue);
   }
 
-  void setValue(double _value) {
-    final double t = _value * 0.75 / 100 - 0.125;
+  void setValue(double v) {
+    final double t = v * 0.75 / 100 - 0.125;
     setState(() {
       value = widget.isRtl ? 0.5 - t : t;
-      percent = _value;
+      percent = v;
     });
   }
 
@@ -279,11 +279,11 @@ class MCustomPainter extends CustomPainter {
 
     final double t = value * 0.75 / 100 - 0.125;
 
-    final double _value = isRtl ? 0.5 - t : t;
+    final double v = isRtl ? 0.5 - t : t;
 
     // 绘制滑块的位置
     final Paint sliderPaint = Paint()..color = Colors.white;
-    final double thumbAngle = (_value - 0.5) * 2 * math.pi;
+    final double thumbAngle = (v - 0.5) * 2 * math.pi;
     final double thumbX = size.width / 2 + math.cos(thumbAngle) * radius;
     final double thumbY = size.height / 2 + math.sin(thumbAngle) * radius;
     canvas.drawCircle(Offset(thumbX, thumbY), strokeWidth / 2, sliderPaint);

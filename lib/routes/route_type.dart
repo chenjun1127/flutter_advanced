@@ -1,1 +1,1 @@
-enum ROUTE_TYPE { bottomToTop, scale, fade }
+enum RouteType { bottomToTop, scale, fade }

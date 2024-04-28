@@ -64,7 +64,7 @@ class Routes {
     if (builder != null) {
       if (settings.arguments != null) {
         if (arguments is Map) {
-          if (arguments['routeType'] == ROUTE_TYPE.bottomToTop) {
+          if (arguments['routeType'] == RouteType.bottomToTop) {
             final Route<dynamic> route = BottomToTopRouter<dynamic>(
                 builder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
                   return builder(context, arguments: settings.arguments);

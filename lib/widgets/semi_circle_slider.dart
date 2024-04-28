@@ -124,20 +124,20 @@ class SemiCircleSliderState extends State<SemiCircleSlider> {
     value = angle / (2 * math.pi) + 0.5;
 
     // 当前进度
-    double _progress = 0;
+    double currentProgress = 0;
     if (value >= 0.875) {
-      _progress = value - 0.875;
+      currentProgress = value - 0.875;
     } else if (value > 0 && value <= 0.625) {
-      _progress = value + (1 - 0.875);
+      currentProgress = value + (1 - 0.875);
     }
-    final double progress = _progress / (0.125 + 0.625) * 100;
+    final double progress = currentProgress / (0.125 + 0.625) * 100;
     JLogger.i("当前进度为：$progress");
     JLogger.i("--value==2=$value,angle====$angle");
     widget.onChange?.call(progress);
   }
 
-  void setValue(double _value) {
-    final double t = _value * 0.75 / 100 - 0.125;
+  void setValue(double v) {
+    final double t = v * 0.75 / 100 - 0.125;
     setState(() {
       value = t;
     });

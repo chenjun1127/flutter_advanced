@@ -1,21 +1,22 @@
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 class ScreenAdapt {
-  factory ScreenAdapt() => _getInstance();
+  factory ScreenAdapt() => _instance;
 
   ScreenAdapt._() {
+    final ui.PlatformDispatcher dispatcher = ui.PlatformDispatcher.instance;
+    // 获取物理尺寸
+    final ui.Size physicalSize = dispatcher.views.first.physicalSize;
+    final double devicePixelRatio = dispatcher.views.first.devicePixelRatio;
     // 初始化分辨率
-    physicalWidth = window.physicalSize.width;
-    physicalHeight = window.physicalSize.height;
-    // 屏幕宽高
-    screenWidth = physicalWidth / window.devicePixelRatio;
-    screenHeight = physicalHeight / window.devicePixelRatio;
+    physicalWidth = physicalSize.width;
+    physicalHeight = physicalSize.height;
+    // 屏幕宽高 (计算屏幕的逻辑尺寸)
+    screenWidth = physicalWidth / devicePixelRatio;
+    screenHeight = physicalHeight / devicePixelRatio;
     //这里是以iphone6 为模板来适配的
     dpr = screenWidth / 750; // 像素点适配
     px = screenWidth / 750 * 2; // 物理宽度适配
-    //导航栏和底部工具栏的高度
-    statusBarHeight = window.padding.top;
-    bottomHeight = window.padding.bottom;
   }
 
   double physicalWidth = 0;
@@ -30,13 +31,9 @@ class ScreenAdapt {
   double statusBarHeight = 0;
   double bottomHeight = 0;
 
-  static ScreenAdapt? _instance;
-  static ScreenAdapt get instance => _getInstance();
-  //获取对象
-  static ScreenAdapt _getInstance() {
-    _instance ??= ScreenAdapt._();
-    return _instance!;
-  }
+  static ScreenAdapt get instance => _instance;
+
+  static final ScreenAdapt _instance = ScreenAdapt._();
 }
 
 extension SizeFit on double {

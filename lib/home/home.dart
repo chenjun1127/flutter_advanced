@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
           Navigator.pushNamed(context, '/demo1', arguments: <String, dynamic>{
             "name": "张三",
             "from": "普通路由传参数",
-            "routeType": ROUTE_TYPE.bottomToTop,
+            "routeType": RouteType.bottomToTop,
           });
         } else if (index == 1) {
           Navigator.push(context, FadeRouter<dynamic>(child: const Demo2(), duration: 200));
@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
                 arguments: <String, dynamic>{
                   "name": "demo3",
                   "from": "支持带参数的路由动画从下到上出现",
-                  "routeType": ROUTE_TYPE.bottomToTop,
+                  "routeType": RouteType.bottomToTop,
                 },
               ),
             ),

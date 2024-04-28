@@ -67,20 +67,24 @@ class MyPainter extends CustomPainter {
   }
 
   void drawBg(Canvas canvas, Rect rect) {
-    final Paint _paint = Paint()
+    final Paint paintBg = Paint()
       ..color = Colors.red
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
-    canvas.drawCircle(Offset(rect.width / 2, rect.height / 2), radius!, _paint);
+    canvas.drawCircle(Offset(rect.width / 2, rect.height / 2), radius!, paintBg);
   }
 
   void drawCircle(Canvas canvas, Rect rect) {
-    final Paint _paint = Paint()..color = Colors.orange;
+    final Paint paintCircle = Paint()..color = Colors.orange;
     for (int i = 0; i < 360; i += 30) {
       final double x = cos(pi / 180 * i) * radius!;
       final double y = sin(pi / 180 * i) * radius!;
-      canvas.drawCircle(Offset(x + rect.width / 2, y + rect.height / 2), 10, _paint);
-      canvas.drawLine(Offset(rect.width / 2, rect.height / 2), Offset(x + rect.width / 2, y + rect.height / 2), _paint);
+      canvas.drawCircle(Offset(x + rect.width / 2, y + rect.height / 2), 10, paintCircle);
+      canvas.drawLine(
+        Offset(rect.width / 2, rect.height / 2),
+        Offset(x + rect.width / 2, y + rect.height / 2),
+        paintCircle,
+      );
     }
   }
 }

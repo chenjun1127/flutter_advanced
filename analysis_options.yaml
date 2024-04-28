@@ -16,9 +16,6 @@ analyzer:
     - "**/icon_font.dart"
   language:
     strict-raw-types: false
-  strong-mode:
-    implicit-casts: true
-    implicit-dynamic: true
 
   errors:
     iterable_contains_unrelated_type: error
