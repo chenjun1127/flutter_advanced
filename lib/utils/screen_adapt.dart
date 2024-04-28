@@ -28,15 +28,12 @@ class ScreenAdapt {
   double dpr = 0;
   double px = 0;
 
-  double statusBarHeight = 0;
-  double bottomHeight = 0;
-
   static ScreenAdapt get instance => _instance;
 
   static final ScreenAdapt _instance = ScreenAdapt._();
 }
 
-extension SizeFit on double {
+extension SizeFit on num {
   double get dpx => this * ScreenAdapt.instance.dpr;
 
   double get px => this * ScreenAdapt.instance.px;

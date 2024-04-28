@@ -15,11 +15,13 @@ class _Demo7State extends State<Demo7> {
     return Scaffold(
       appBar: AppBar(title: const Text("Flutter 屏幕适配方案")),
       body: BaseContainer(
-        child: Container(
-          width: 200.0.dpx,
-          height: 200.0.dpx,
-          color: Colors.teal,
-          child: const Text("dpx 适配"),
+        child: Center(
+          child: Container(
+            width: 400.dpx,
+            height: 400.dpx,
+            color: Colors.red,
+            child: const Text("dpx 适配"),
+          ),
         ),
       ),
     );
