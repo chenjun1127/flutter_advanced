@@ -5,8 +5,6 @@ class Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("2"),
-    );
+    return const Text("2");
   }
 }
