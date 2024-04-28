@@ -28,7 +28,6 @@ class Demo18 extends StatelessWidget {
 
 class CircularGradientBar extends StatelessWidget {
   const CircularGradientBar({
-    // Progress should be a value between 0 and 1, Key? key,
     this.strokeWidth = 8.0,
     Key? key,
     this.color = Colors.blue,
@@ -100,11 +99,12 @@ class _CircularGradientPainter extends CustomPainter {
 
 class CircularProgressBar extends StatelessWidget {
   const CircularProgressBar({
-    required this.progress, // Progress should be a value between 0 and 1, Key? key,
+    required this.progress,
     this.strokeWidth = 8.0,
     this.color = Colors.blue,
     Key? key,
-  }) : super(key: key);
+  })  : assert(progress >= 0 && progress <= 1, "Progress should be a value between 0 and 1"),
+        super(key: key);
   final double progress;
   final double strokeWidth;
   final Color color;
