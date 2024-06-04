@@ -1,9 +1,9 @@
 import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_advanced/pages/main_page.dart';
-import 'package:flutter_advanced/pages/not_found_page.dart';
 import 'package:flutter_advanced/routes/routes.dart';
+import 'package:flutter_advanced/ui/pages/main_page.dart';
+import 'package:flutter_advanced/ui/pages/not_found_page.dart';
 
 void main() {
   CjKit.runApp(

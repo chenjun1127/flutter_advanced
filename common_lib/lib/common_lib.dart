@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 export 'package:cj_kit/cj_kit.dart';
 export 'package:cj_kit/logger/j_logger.dart';
+export 'package:common_lib/utils/screen_adapt.dart';
 export 'package:flutter_mobx/flutter_mobx.dart';
 export 'package:provider/provider.dart';
 

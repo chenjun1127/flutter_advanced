@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/content/change_notifier_widget.dart';
-import 'package:flutter_advanced/content/stream_subscription_widget.dart';
-import 'package:flutter_advanced/content/value_notifier_widget.dart';
 import 'package:flutter_advanced/routes/routes.dart';
+import 'package:flutter_advanced/ui/content/change_notifier_widget.dart';
+import 'package:flutter_advanced/ui/content/stream_subscription_widget.dart';
+import 'package:flutter_advanced/ui/content/value_notifier_widget.dart';
 
 class Content extends StatelessWidget {
   const Content({Key? key}) : super(key: key);

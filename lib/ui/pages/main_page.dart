@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/content/content.dart';
-import 'package:flutter_advanced/home/home.dart';
-import 'package:flutter_advanced/setting/setting.dart';
+import 'package:flutter_advanced/ui/content/content.dart';
+import 'package:flutter_advanced/ui/home/home.dart';
+import 'package:flutter_advanced/ui/setting/setting.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

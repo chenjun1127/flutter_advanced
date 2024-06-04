@@ -1,6 +1,6 @@
 import 'package:common_lib/common_lib.dart';
+import 'package:common_lib/utils/debounce_throttle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/utils/debounce_throttle.dart';
 
 class Demo9 extends StatefulWidget {
   const Demo9({Key? key}) : super(key: key);

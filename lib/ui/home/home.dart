@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/pages/demo11.dart';
-import 'package:flutter_advanced/pages/demo2.dart';
-import 'package:flutter_advanced/pages/demo3.dart';
-import 'package:flutter_advanced/pages/not_found_page.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
 import 'package:flutter_advanced/routes/routes.dart';
+import 'package:flutter_advanced/ui/pages/demo11.dart';
+import 'package:flutter_advanced/ui/pages/demo2.dart';
+import 'package:flutter_advanced/ui/pages/demo3.dart';
+import 'package:flutter_advanced/ui/pages/not_found_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
