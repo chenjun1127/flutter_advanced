@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/content/change_notifier_widget.dart';
+import 'package:flutter_advanced/content/stream_subscription_widget.dart';
+import 'package:flutter_advanced/content/value_notifier_widget.dart';
 import 'package:flutter_advanced/pages/demo1.dart';
-import 'package:flutter_advanced/pages/demo10.dart';
-import 'package:flutter_advanced/pages/demo11.dart';
 import 'package:flutter_advanced/pages/demo12.dart';
 import 'package:flutter_advanced/pages/demo13.dart';
 import 'package:flutter_advanced/pages/demo14.dart';
 import 'package:flutter_advanced/pages/demo15.dart';
-import 'package:flutter_advanced/pages/demo16.dart';
-import 'package:flutter_advanced/pages/demo17.dart';
-import 'package:flutter_advanced/pages/demo18.dart';
 import 'package:flutter_advanced/pages/demo2.dart';
 import 'package:flutter_advanced/pages/demo3.dart';
 import 'package:flutter_advanced/pages/demo4.dart';
@@ -26,24 +24,27 @@ final List<int> routeList = List<int>.generate(baseRoute.values.length, (int ind
 typedef WidgetBuilder = Widget Function(BuildContext context, {dynamic arguments});
 
 final Map<String, WidgetBuilder> baseRoute = <String, WidgetBuilder>{
-  "/demo1": (BuildContext context, {dynamic arguments}) => const Demo1(),
-  "/demo2": (BuildContext context, {dynamic arguments}) => const Demo2(),
-  "/demo3": (BuildContext context, {dynamic arguments}) => const Demo3(),
-  "/demo4": (BuildContext context, {dynamic arguments}) => const Demo4(),
-  "/demo5": (BuildContext context, {dynamic arguments}) => const Demo5(),
-  "/demo6": (BuildContext context, {dynamic arguments}) => const Demo6(),
-  "/demo7": (BuildContext context, {dynamic arguments}) => const Demo7(),
-  "/demo8": (BuildContext context, {dynamic arguments}) => const Demo8(),
-  "/demo9": (BuildContext context, {dynamic arguments}) => const Demo9(),
-  "/demo10": (BuildContext context, {dynamic arguments}) => const Demo10(),
-  "/demo11": (BuildContext context, {dynamic arguments}) => const Demo11(),
-  "/demo12": (BuildContext context, {dynamic arguments}) => const Demo12(),
-  "/demo13": (BuildContext context, {dynamic arguments}) => const Demo13(),
-  "/demo14": (BuildContext context, {dynamic arguments}) => const Demo14(),
-  "/demo15": (BuildContext context, {dynamic arguments}) => const Demo15(),
-  "/demo16": (BuildContext context, {dynamic arguments}) => const Demo16(),
-  "/demo17": (BuildContext context, {dynamic arguments}) => const Demo17(),
-  "/demo18": (BuildContext context, {dynamic arguments}) => const Demo18(),
+  "demo1": (BuildContext context, {dynamic arguments}) => const Demo1(),
+  "demo2": (BuildContext context, {dynamic arguments}) => const Demo2(),
+  "demo3": (BuildContext context, {dynamic arguments}) => const Demo3(),
+  "demo4": (BuildContext context, {dynamic arguments}) => const Demo4(),
+  "demo5": (BuildContext context, {dynamic arguments}) => const Demo5(),
+  "demo6": (BuildContext context, {dynamic arguments}) => const Demo4(),
+  "demo7": (BuildContext context, {dynamic arguments}) => const Demo5(),
+  "demo8": (BuildContext context, {dynamic arguments}) => const Demo6(),
+  "demo9": (BuildContext context, {dynamic arguments}) => const Demo7(),
+  "demo10": (BuildContext context, {dynamic arguments}) => const Demo8(),
+  "demo11": (BuildContext context, {dynamic arguments}) => const Demo9(),
+  "demo12": (BuildContext context, {dynamic arguments}) => const Demo12(),
+  "demo13": (BuildContext context, {dynamic arguments}) => const Demo13(),
+  "demo14": (BuildContext context, {dynamic arguments}) => const Demo14(),
+  "demo15": (BuildContext context, {dynamic arguments}) => const Demo15(),
+};
+
+final Map<String, WidgetBuilder> routeMap = <String, WidgetBuilder>{
+  ChangeNotifierWidget.routeName: (BuildContext context, {dynamic arguments}) => const ChangeNotifierWidget(),
+  StreamSubscriptionWidget.routeName: (BuildContext context, {dynamic arguments}) => const StreamSubscriptionWidget(),
+  ValueNotifierWidget.routeName: (BuildContext context, {dynamic arguments}) => const ValueNotifierWidget(),
 };
 
 class Routes {
@@ -52,6 +53,7 @@ class Routes {
     return <String, WidgetBuilder>{
       '/': (BuildContext context, {dynamic arguments}) => const MainPage(),
       ...baseRoute,
+      ...routeMap,
     };
   }
 

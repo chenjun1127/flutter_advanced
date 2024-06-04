@@ -1,16 +1,11 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/entity/device.dart';
-import 'package:flutter_advanced/pages/demo14.dart';
+import 'package:flutter_advanced/pages/demo11.dart';
 import 'package:flutter_advanced/pages/demo2.dart';
 import 'package:flutter_advanced/pages/demo3.dart';
 import 'package:flutter_advanced/pages/not_found_page.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
 import 'package:flutter_advanced/routes/routes.dart';
-import 'package:flutter_advanced/store/device_store.dart';
-import 'package:flutter_advanced/store/root_store.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,24 +15,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final DeviceStore deviceStore = rootStore.deviceStore;
-
-  @override
-  void initState() {
-    super.initState();
-    final List<Device> list = <Device>[];
-    for (int i = 0; i < 50; i++) {
-      list.add(Device(
-        deviceId: '设备$i',
-        deviceName: i.toString(),
-        type: 0,
-        value: Random().nextInt(1000),
-        createTime: DateTime.fromMillisecondsSinceEpoch(DateTime.now().millisecondsSinceEpoch).toString(),
-      ));
-    }
-    deviceStore.updateDeviceList(list);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,7 +38,7 @@ class _HomeState extends State<Home> {
     return TextButton(
       onPressed: () {
         if (index == 0) {
-          Navigator.pushNamed(context, '/demo1', arguments: <String, dynamic>{
+          Navigator.pushNamed(context, 'demo1', arguments: <String, dynamic>{
             "name": "张三",
             "from": "普通路由传参数",
             "routeType": RouteType.bottomToTop,
@@ -76,7 +53,7 @@ class _HomeState extends State<Home> {
                 return const Demo3();
               },
               settings: const RouteSettings(
-                name: "/demo3",
+                name: "demo3",
                 arguments: <String, dynamic>{
                   "name": "demo3",
                   "from": "支持带参数的路由动画从下到上出现",
@@ -89,12 +66,12 @@ class _HomeState extends State<Home> {
           Navigator.push(
             context,
             MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => Demo14(store: deviceStore),
+              builder: (BuildContext context) => const Demo11(),
             ),
           );
         } else {
           if (index < baseRoute.length) {
-            Navigator.pushNamed(context, '/demo${routeList[index] + 1}');
+            Navigator.pushNamed(context, 'demo${routeList[index] + 1}');
           } else {
             Navigator.push(
               context,
@@ -125,11 +102,5 @@ class _HomeState extends State<Home> {
       return Colors.blue;
     }
     return Colors.teal;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    deviceStore.deviceList.clear();
   }
 }

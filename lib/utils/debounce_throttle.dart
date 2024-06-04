@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cj_kit/logger/j_logger.dart';
+import 'package:common_lib/common_lib.dart';
 
 class ThrottleDebounce {
   Timer? _timer;

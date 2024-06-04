@@ -1,7 +1,12 @@
-import 'dart:math';
+import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/widgets/base_container.dart';
+import 'package:http/http.dart' as http;
+import 'package:image/image.dart' as img;
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as path_provider;
 
 class Demo8 extends StatefulWidget {
   const Demo8({Key? key}) : super(key: key);
@@ -11,79 +16,75 @@ class Demo8 extends StatefulWidget {
 }
 
 class _Demo8State extends State<Demo8> {
-  double radius = 100;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("CustomPainter")),
-      body: BaseContainer(
-        child: Container(
-          color: Colors.teal,
-          height: MediaQuery.of(context).size.height,
-          //点击刷新时避免重绘
-          child: RepaintBoundary(
-            child: CustomPaint(
-              painter: MyPainter(radius: radius),
-            ),
-          ),
-        ),
+      appBar: AppBar(
+        title: const Text('Path Io'),
       ),
-      floatingActionButton: SizedBox(
-        height: 50,
-        width: 160,
-        child: ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-          ),
-          onPressed: () {
-            setState(() {
-              radius = radius >= 150 ? 100 : radius += 10;
-            });
-          },
-          child: const Text('点击改变radius'),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Row(
+          children: <Widget>[
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              ),
+              onPressed: downloadImg,
+              child: const Text('存储网络图片'),
+            ),
+            const SizedBox(width: 10),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.teal),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              ),
+              onPressed: readFile,
+              child: const Text('读取图片'),
+            ),
+          ],
         ),
       ),
     );
   }
-}
 
-class MyPainter extends CustomPainter {
-  MyPainter({this.radius = 100});
-
-  final double? radius;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final Rect rect = Offset.zero & size;
-    drawBg(canvas, rect);
-    drawCircle(canvas, rect);
+  Future<void> downloadImg() async {
+    const String url = 'https://live.staticflickr.com/65535/51509388947_4b5b9a36a4_b.jpg';
+    final http.Response response = await http.get(Uri.parse(url));
+    // Uint8List t= t.bodyBytes;
+    final String imageName = path.basenameWithoutExtension(url);
+    JLogger.i("图片名称=====$imageName");
+    final Directory appDir = await path_provider.getApplicationSupportDirectory();
+    final String localPath = path.join(appDir.path, '$imageName.bmp');
+    JLogger.i("存储路径=====$appDir");
+    // Downloading
+    final File imageFile = File(localPath);
+    final img.Image? imageData = img.decodeImage(response.bodyBytes);
+    final List<int> a = img.encodeBmp(imageData!);
+    await imageFile.writeAsBytes(a);
   }
 
-  @override
-  bool shouldRepaint(covariant MyPainter oldDelegate) {
-    return oldDelegate.radius != radius;
-  }
-
-  void drawBg(Canvas canvas, Rect rect) {
-    final Paint paintBg = Paint()
-      ..color = Colors.red
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2;
-    canvas.drawCircle(Offset(rect.width / 2, rect.height / 2), radius!, paintBg);
-  }
-
-  void drawCircle(Canvas canvas, Rect rect) {
-    final Paint paintCircle = Paint()..color = Colors.orange;
-    for (int i = 0; i < 360; i += 30) {
-      final double x = cos(pi / 180 * i) * radius!;
-      final double y = sin(pi / 180 * i) * radius!;
-      canvas.drawCircle(Offset(x + rect.width / 2, y + rect.height / 2), 10, paintCircle);
-      canvas.drawLine(
-        Offset(rect.width / 2, rect.height / 2),
-        Offset(x + rect.width / 2, y + rect.height / 2),
-        paintCircle,
+  Future<void> readFile() async {
+    final Directory appDir = await path_provider.getApplicationSupportDirectory();
+    final Uint8List imageData = await File(path.join(appDir.path, '51509388947_4b5b9a36a4_b.bmp')).readAsBytes();
+    if (context.mounted) {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              '读取保存的图片',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w300,
+                color: Theme.of(context).primaryColor,
+                letterSpacing: 1.1,
+              ),
+            ),
+            content: Image.memory(Uint8List.view(imageData.buffer)),
+          );
+        },
       );
     }
   }

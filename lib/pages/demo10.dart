@@ -1,15 +1,10 @@
-import 'dart:io';
-import 'dart:typed_data';
-
-import 'package:cj_kit/logger/j_logger.dart';
+import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:image/image.dart' as img;
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
+import 'package:flutter_advanced/widgets/semi_circle_slider.dart';
+import 'package:flutter_advanced/widgets/semi_circle_slider_2.dart';
 
 class Demo10 extends StatefulWidget {
-  const Demo10({Key? key}) : super(key: key);
+  const Demo10({super.key});
 
   @override
   State<Demo10> createState() => _Demo10State();
@@ -20,72 +15,37 @@ class _Demo10State extends State<Demo10> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Path Io'),
+        title: const Text("Canvas绘制可拖动的环形进度条"),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
+        color: Colors.green,
+        padding: const EdgeInsetsDirectional.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              ),
-              onPressed: downloadImg,
-              child: const Text('存储网络图片'),
+            const SizedBox(height: 10),
+            SemiCircleSlider(
+              onChange: (double value) {
+                JLogger.i("--当前进度为1:$value");
+              },
             ),
-            const SizedBox(width: 10),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: const Text(
+                "下面这个更完整，支持阿拉伯语从右边滑动",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              onPressed: readFile,
-              child: const Text('读取图片'),
+            ),
+            SemiCircleSlider2(
+              value: 10,
+              isRtl: Directionality.of(context) == TextDirection.rtl,
+              onChange: (double progress, {bool value = false}) {
+                JLogger.i("--当前进度为2:$progress,$value");
+              },
             ),
           ],
         ),
       ),
     );
-  }
-
-  Future<void> downloadImg() async {
-    const String url = 'https://live.staticflickr.com/65535/51509388947_4b5b9a36a4_b.jpg';
-    final http.Response response = await http.get(Uri.parse(url));
-    // Uint8List t= t.bodyBytes;
-    final String imageName = path.basenameWithoutExtension(url);
-    JLogger.i("图片名称=====$imageName");
-    final Directory appDir = await getApplicationSupportDirectory();
-    final String localPath = path.join(appDir.path, '$imageName.bmp');
-    JLogger.i("存储路径=====$appDir");
-    // Downloading
-    final File imageFile = File(localPath);
-    final img.Image? imageData = img.decodeImage(response.bodyBytes);
-    final List<int> a = img.encodeBmp(imageData!);
-    await imageFile.writeAsBytes(a);
-  }
-
-  Future<void> readFile() async {
-    final Directory appDir = await getApplicationSupportDirectory();
-    final Uint8List imageData = await File(path.join(appDir.path, '51509388947_4b5b9a36a4_b.bmp')).readAsBytes();
-    if (context.mounted) {
-      return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              '读取保存的图片',
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w300,
-                color: Theme.of(context).primaryColor,
-                letterSpacing: 1.1,
-              ),
-            ),
-            content: Image.memory(Uint8List.view(imageData.buffer)),
-          );
-        },
-      );
-    }
   }
 }

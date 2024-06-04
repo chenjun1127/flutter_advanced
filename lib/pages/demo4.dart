@@ -1,9 +1,6 @@
+import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/entity/user_info.dart';
-import 'package:flutter_advanced/pages/demo5.dart';
-import 'package:flutter_advanced/routes/animate_route.dart';
-import 'package:flutter_advanced/stream/stream_controller.dart';
-import 'package:flutter_advanced/widgets/base_container.dart';
+import 'package:flutter/scheduler.dart';
 
 class Demo4 extends StatefulWidget {
   const Demo4({Key? key}) : super(key: key);
@@ -12,74 +9,21 @@ class Demo4 extends StatefulWidget {
   State<Demo4> createState() => _Demo4State();
 }
 
+// addPostFrameCallback 是 StatefulWidget 渲染结束的回调，只会被调用一次，之后 StatefulWidget 需要刷新 UI 也不会被调用，
 class _Demo4State extends State<Demo4> {
-  final UserInfoNotifier userInfoNotifier = UserInfoNotifier(UserInfo());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("StreamSubscription 的基本使用")),
-      body: BaseContainer(
-        child: Column(
-          children: <Widget>[
-            ValueListenableBuilder<UserInfo>(
-              builder: (BuildContext context, UserInfo userInfo, Widget? child) {
-                return Text("姓名是：${userInfo.name ?? ""}，年龄是: ${userInfo.age ?? ""}");
-              },
-              valueListenable: userInfoNotifier,
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              height: 48,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
-                ),
-                onPressed: () {
-                  userInfoNotifier.setUserInfo("Tony", 32);
-                },
-                child: const Text('ValueNotifier触发通知改变'),
-              ),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              height: 48,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
-                ),
-                onPressed: () {
-                  final UserInfo userInfo = userInfoNotifier.value;
-                  streamController.add(userInfo);
-                  Navigator.push(
-                    context,
-                    BottomToTopRouter<dynamic>(
-                      builder: (BuildContext context, Animation<double> a, Animation<double> s) {
-                        return Demo5(userInfo: userInfo);
-                      },
-                    ),
-                  );
-                },
-                child: const Text('Stream流订阅通知'),
-              ),
-            )
-          ],
-        ),
-      ),
+      appBar: AppBar(title: const Text("SchedulerBinding")),
+      body: Container(),
     );
   }
-}
 
-class UserInfoNotifier extends ValueNotifier<UserInfo> {
-  UserInfoNotifier(UserInfo userInfo) : super(userInfo);
-
-  void setUserInfo(String name, int age) {
-    value.name = name;
-    value.age = age;
-    notifyListeners();
+  @override
+  void initState() {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      JLogger.i("渲染完成");
+    });
+    super.initState();
   }
 }

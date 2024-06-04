@@ -1,10 +1,11 @@
+import 'dart:math' as math;
+
 import 'package:collection/collection.dart';
-import 'package:flutter_advanced/entity/device.dart';
+import 'package:common_lib/entity/device.dart';
 import 'package:mobx/mobx.dart';
 
 part 'device_store.g.dart';
 
-//ignore: library_private_types_in_public_api
 class DeviceStore = _DeviceStore with _$DeviceStore;
 
 abstract class _DeviceStore with Store {
@@ -35,6 +36,7 @@ abstract class _DeviceStore with Store {
       deviceList.insert(index, currentDevice);
     }
   }
+
   ///此种方法通过监听device实现类中int值，来实现widget刷新，缺点，入侵了实体类
   @action
   void updateDeviceById(String deviceId) {
@@ -42,7 +44,23 @@ abstract class _DeviceStore with Store {
     device?.value = 1500;
     device?.update();
   }
+
+  void createAndProcessDeviceList() {
+    final List<Device> list = <Device>[];
+    final math.Random random = math.Random();
+    for (int i = 0; i < 50; i++) {
+      list.add(Device(
+        deviceId: '设备$i',
+        deviceName: i.toString(),
+        type: 0,
+        value: random.nextInt(1000),
+        createTime: DateTime.now().toIso8601String(),
+      ));
+    }
+    updateDeviceList(list);
+  }
 }
+
 ///官方推荐做法，给实体类需求更新的属性添加observable。。。代价过大
 // class Device = _Device with _$Device;
 //

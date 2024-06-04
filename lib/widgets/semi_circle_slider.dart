@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:cj_kit/logger/j_logger.dart';
+import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
 
 typedef VoidDoubleCallBack = void Function(double progress);

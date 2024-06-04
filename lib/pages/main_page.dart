@@ -12,17 +12,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
-  List<Widget> pageList = <Widget>[
-    const Home(),
-    const Content(),
-    const Setting(),
+  String title = "首页";
+  List<ItemBar> itemBarList = <ItemBar>[
+    ItemBar("首页", const Home(), const Icon(Icons.home)),
+    ItemBar("状态管理", const Content(), const Icon(Icons.list)),
+    ItemBar("设置", const Setting(), const Icon(Icons.settings))
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Flutter advanced application"),
+        title: Text(title),
       ),
       bottomNavigationBar: BottomNavigationBar(
         // 当前菜单下标
@@ -32,6 +33,7 @@ class _MainPageState extends State<MainPage> {
           // 改变状态
           setState(() {
             currentIndex = index;
+            title = itemBarList[index].title;
           });
         },
         // 图标大小
@@ -40,14 +42,17 @@ class _MainPageState extends State<MainPage> {
         fixedColor: Colors.blue,
         // 多个标签页的动画效果
         type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          // 只能是BottomNavigationBarItem的类型
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
-          BottomNavigationBarItem(icon: Icon(Icons.category), label: "分类"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "设置")
-        ],
+        items: itemBarList.map((ItemBar e) => BottomNavigationBarItem(icon: e.icon, label: e.title)).toList(),
       ),
-      body: pageList[currentIndex],
+      body: itemBarList[currentIndex].page,
     );
   }
+}
+
+class ItemBar {
+  ItemBar(this.title, this.page, this.icon);
+
+  final String title;
+  final Widget page;
+  final Icon icon;
 }
