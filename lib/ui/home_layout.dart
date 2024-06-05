@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/ui/content/content.dart';
-import 'package:flutter_advanced/ui/home/home.dart';
-import 'package:flutter_advanced/ui/setting/setting.dart';
+import 'package:flutter_advanced/ui/pages/getx/getx_page.dart';
+import 'package:flutter_advanced/ui/pages/home/home_page.dart';
+import 'package:flutter_advanced/ui/pages/setting/setting_page.dart';
+import 'package:flutter_advanced/ui/pages/state/state_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+class HomeLayout extends StatefulWidget {
+  const HomeLayout({Key? key}) : super(key: key);
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<HomeLayout> createState() => _HomeLayoutState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _HomeLayoutState extends State<HomeLayout> {
   int currentIndex = 0;
   String title = "首页";
   List<ItemBar> itemBarList = <ItemBar>[
-    ItemBar("首页", const Home(), const Icon(Icons.home)),
-    ItemBar("状态管理", const Content(), const Icon(Icons.list)),
-    ItemBar("设置", const Setting(), const Icon(Icons.settings))
+    ItemBar("首页", const HomePage(), const Icon(Icons.home)),
+    ItemBar("状态管理", const StatePage(), const Icon(Icons.list)),
+    ItemBar("GetX", const GetXPage(), const Icon(Icons.label_outline_rounded)),
+    ItemBar("设置", const SettingPage(), const Icon(Icons.settings))
   ];
 
   @override

@@ -2,8 +2,8 @@ import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/routes/routes.dart';
-import 'package:flutter_advanced/ui/pages/main_page.dart';
-import 'package:flutter_advanced/ui/pages/not_found_page.dart';
+import 'package:flutter_advanced/ui/home_layout.dart';
+import 'package:flutter_advanced/ui/not_found_page.dart';
 
 void main() {
   CjKit.runApp(
@@ -14,6 +14,7 @@ void main() {
       // 调整Flutter中图片缓存的最大大小,图片缓存的最大数量为200张图,图片缓存的最大字节大小为40MB。
       PaintingBinding.instance.imageCache.maximumSize = 200;
       PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
+      CommonBindings.init();
       await CommonLib.init(navigatorKey: navigatorKey);
     },
   );
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: Routes.onGenerateRoute,
-      home: const MainPage(),
+      home: const HomeLayout(),
       onUnknownRoute: (_) {
         return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
           return const NotFoundPage();

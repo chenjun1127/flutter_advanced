@@ -37,13 +37,13 @@ mixin _$DeviceStore on _DeviceStore, Store {
       Atom(name: '_DeviceStore.deviceList', context: context);
 
   @override
-  ObservableList<Device> get deviceList {
+  ObservableList<VirtualDevice> get deviceList {
     _$deviceListAtom.reportRead();
     return super.deviceList;
   }
 
   @override
-  set deviceList(ObservableList<Device> value) {
+  set deviceList(ObservableList<VirtualDevice> value) {
     _$deviceListAtom.reportWrite(value, super.deviceList, () {
       super.deviceList = value;
     });
@@ -53,7 +53,7 @@ mixin _$DeviceStore on _DeviceStore, Store {
       ActionController(name: '_DeviceStore', context: context);
 
   @override
-  void updateDeviceList(List<Device> list) {
+  void updateDeviceList(List<VirtualDevice> list) {
     final _$actionInfo = _$_DeviceStoreActionController.startAction(
         name: '_DeviceStore.updateDeviceList');
     try {

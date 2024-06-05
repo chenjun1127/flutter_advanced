@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
-import 'package:flutter_advanced/ui/content/change_notifier_widget.dart';
-import 'package:flutter_advanced/ui/content/stream_subscription_widget.dart';
-import 'package:flutter_advanced/ui/content/value_notifier_widget.dart';
-import 'package:flutter_advanced/ui/pages/demo1.dart';
-import 'package:flutter_advanced/ui/pages/demo12.dart';
-import 'package:flutter_advanced/ui/pages/demo13.dart';
-import 'package:flutter_advanced/ui/pages/demo14.dart';
-import 'package:flutter_advanced/ui/pages/demo15.dart';
-import 'package:flutter_advanced/ui/pages/demo2.dart';
-import 'package:flutter_advanced/ui/pages/demo3.dart';
-import 'package:flutter_advanced/ui/pages/demo4.dart';
-import 'package:flutter_advanced/ui/pages/demo5.dart';
-import 'package:flutter_advanced/ui/pages/demo6.dart';
-import 'package:flutter_advanced/ui/pages/demo7.dart';
-import 'package:flutter_advanced/ui/pages/demo8.dart';
-import 'package:flutter_advanced/ui/pages/demo9.dart';
-import 'package:flutter_advanced/ui/pages/main_page.dart';
+import 'package:flutter_advanced/ui/home_layout.dart';
+import 'package:flutter_advanced/ui/pages/getx/get_view_demo.dart';
+import 'package:flutter_advanced/ui/pages/getx/obx_list_demo.dart';
+import 'package:flutter_advanced/ui/pages/home/demo1.dart';
+import 'package:flutter_advanced/ui/pages/home/demo10.dart';
+import 'package:flutter_advanced/ui/pages/home/demo11.dart';
+import 'package:flutter_advanced/ui/pages/home/demo12.dart';
+import 'package:flutter_advanced/ui/pages/home/demo13.dart';
+import 'package:flutter_advanced/ui/pages/home/demo14.dart';
+import 'package:flutter_advanced/ui/pages/home/demo15.dart';
+import 'package:flutter_advanced/ui/pages/home/demo2.dart';
+import 'package:flutter_advanced/ui/pages/home/demo3.dart';
+import 'package:flutter_advanced/ui/pages/home/demo4.dart';
+import 'package:flutter_advanced/ui/pages/home/demo5.dart';
+import 'package:flutter_advanced/ui/pages/home/demo6.dart';
+import 'package:flutter_advanced/ui/pages/home/demo7.dart';
+import 'package:flutter_advanced/ui/pages/home/demo8.dart';
+import 'package:flutter_advanced/ui/pages/home/demo9.dart';
+import 'package:flutter_advanced/ui/pages/state/change_notifier_widget.dart';
+import 'package:flutter_advanced/ui/pages/state/stream_subscription_widget.dart';
+import 'package:flutter_advanced/ui/pages/state/value_notifier_widget.dart';
 
 final List<int> routeList = List<int>.generate(baseRoute.values.length, (int index) => index);
 
@@ -29,12 +33,12 @@ final Map<String, WidgetBuilder> baseRoute = <String, WidgetBuilder>{
   "demo3": (BuildContext context, {dynamic arguments}) => const Demo3(),
   "demo4": (BuildContext context, {dynamic arguments}) => const Demo4(),
   "demo5": (BuildContext context, {dynamic arguments}) => const Demo5(),
-  "demo6": (BuildContext context, {dynamic arguments}) => const Demo4(),
-  "demo7": (BuildContext context, {dynamic arguments}) => const Demo5(),
-  "demo8": (BuildContext context, {dynamic arguments}) => const Demo6(),
-  "demo9": (BuildContext context, {dynamic arguments}) => const Demo7(),
-  "demo10": (BuildContext context, {dynamic arguments}) => const Demo8(),
-  "demo11": (BuildContext context, {dynamic arguments}) => const Demo9(),
+  "demo6": (BuildContext context, {dynamic arguments}) => const Demo6(),
+  "demo7": (BuildContext context, {dynamic arguments}) => const Demo7(),
+  "demo8": (BuildContext context, {dynamic arguments}) => const Demo8(),
+  "demo9": (BuildContext context, {dynamic arguments}) => const Demo9(),
+  "demo10": (BuildContext context, {dynamic arguments}) => const Demo10(),
+  "demo11": (BuildContext context, {dynamic arguments}) => const Demo11(),
   "demo12": (BuildContext context, {dynamic arguments}) => const Demo12(),
   "demo13": (BuildContext context, {dynamic arguments}) => const Demo13(),
   "demo14": (BuildContext context, {dynamic arguments}) => const Demo14(),
@@ -46,14 +50,19 @@ final Map<String, WidgetBuilder> routeMap = <String, WidgetBuilder>{
   StreamSubscriptionWidget.routeName: (BuildContext context, {dynamic arguments}) => const StreamSubscriptionWidget(),
   ValueNotifierWidget.routeName: (BuildContext context, {dynamic arguments}) => const ValueNotifierWidget(),
 };
+final Map<String, WidgetBuilder> getXRouteMap = <String, WidgetBuilder>{
+  GetViewDemo.routeName: (BuildContext context, {dynamic arguments}) => const GetViewDemo(),
+  ObxListDemo.routeName: (BuildContext context, {dynamic arguments}) => const ObxListDemo(),
+};
 
 class Routes {
   ///路由配置
   static Map<String, WidgetBuilder> initRoutes() {
     return <String, WidgetBuilder>{
-      '/': (BuildContext context, {dynamic arguments}) => const MainPage(),
+      '/': (BuildContext context, {dynamic arguments}) => const HomeLayout(),
       ...baseRoute,
       ...routeMap,
+      ...getXRouteMap,
     };
   }
 

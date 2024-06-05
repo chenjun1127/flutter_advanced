@@ -1,5 +1,5 @@
 import 'package:common_lib/common_lib.dart';
-import 'package:common_lib/entity/device.dart';
+import 'package:common_lib/entity/virtual_device.dart';
 import 'package:common_lib/stores/root_store.dart';
 import 'package:flutter/material.dart';
 
@@ -21,14 +21,13 @@ class _Demo11State extends State<Demo11> {
         color: Colors.green,
         child: Observer(
           builder: (BuildContext context) {
-            final List<Device> list = rootStore.deviceStore.deviceList.toList();
-            // 由于在main init中已经初始化声明过deviceStore了，所以也可以用下面的
-            // rootStore.deviceStore.deviceList
+            final List<VirtualDevice> list = rootStore.deviceStore.deviceList.toList();
             return ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
                 return Observer(
                   builder: (BuildContext context) {
-                    final Device device = list[index];
+                    final VirtualDevice device = list[index];
                     device.setUpdate();
                     return _buildItems(device, index);
                   },
@@ -47,7 +46,7 @@ class _Demo11State extends State<Demo11> {
     rootStore.deviceStore.updateDeviceById(deviceId);
   }
 
-  Widget _buildItems(Device device, int index) {
+  Widget _buildItems(VirtualDevice device, int index) {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: const BoxDecoration(
@@ -56,7 +55,7 @@ class _Demo11State extends State<Demo11> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text('序号：$index---value:${device.value}'),
+          Text('${device.desc}-序号：$index---value:${device.value}'),
           MaterialButton(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,

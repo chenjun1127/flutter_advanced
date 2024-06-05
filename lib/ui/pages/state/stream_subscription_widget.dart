@@ -2,9 +2,8 @@ import 'package:common_lib/controller/stream_controller.dart';
 import 'package:common_lib/entity/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
-import 'package:flutter_advanced/ui/content/value_notifier_widget.dart';
+import 'package:flutter_advanced/ui/pages/state/value_notifier_widget.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';
-
 
 class StreamSubscriptionWidget extends StatefulWidget {
   const StreamSubscriptionWidget({Key? key}) : super(key: key);

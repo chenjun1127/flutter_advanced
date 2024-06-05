@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/routes.dart';
-import 'package:flutter_advanced/ui/content/change_notifier_widget.dart';
-import 'package:flutter_advanced/ui/content/stream_subscription_widget.dart';
-import 'package:flutter_advanced/ui/content/value_notifier_widget.dart';
+import 'package:flutter_advanced/ui/pages/getx/get_view_demo.dart';
+import 'package:flutter_advanced/ui/pages/getx/obx_list_demo.dart';
 
-class Content extends StatelessWidget {
-  const Content({Key? key}) : super(key: key);
+class GetXPage extends StatelessWidget {
+  const GetXPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class Content extends StatelessWidget {
         return buildItem(index, context);
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(thickness: 0.5),
-      itemCount: routeMap.keys.length,
+      itemCount: getXRouteMap.keys.length,
     );
   }
 
@@ -23,15 +22,15 @@ class Content extends StatelessWidget {
     return CupertinoButton(
       child: Container(
         alignment: Alignment.centerLeft,
-        child: Text(routeMap.keys.toList()[index], style: const TextStyle(color: Colors.black, fontSize: 18)),
+        child: Text(getXRouteMap.keys.toList()[index], style: const TextStyle(color: Colors.black, fontSize: 18)),
       ),
       onPressed: () {
         if (index == 0) {
-          Navigator.pushNamed(context, ChangeNotifierWidget.routeName);
+          Navigator.pushNamed(context, GetViewDemo.routeName);
         } else if (index == 1) {
-          Navigator.pushNamed(context, StreamSubscriptionWidget.routeName);
+          Navigator.pushNamed(context, ObxListDemo.routeName);
         } else if (index == 2) {
-          Navigator.pushNamed(context, ValueNotifierWidget.routeName);
+          // Navigator.pushNamed(context, ValueNotifierWidget.routeName);
         }
       },
     );

@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
 import 'package:flutter_advanced/routes/routes.dart';
-import 'package:flutter_advanced/ui/pages/demo11.dart';
-import 'package:flutter_advanced/ui/pages/demo2.dart';
-import 'package:flutter_advanced/ui/pages/demo3.dart';
-import 'package:flutter_advanced/ui/pages/not_found_page.dart';
+import 'package:flutter_advanced/ui/not_found_page.dart';
+import 'package:flutter_advanced/ui/pages/home/demo2.dart';
+import 'package:flutter_advanced/ui/pages/home/demo3.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,13 +59,6 @@ class _HomeState extends State<Home> {
                   "routeType": RouteType.bottomToTop,
                 },
               ),
-            ),
-          );
-        } else if (index == 13) {
-          Navigator.push(
-            context,
-            MaterialPageRoute<dynamic>(
-              builder: (BuildContext context) => const Demo11(),
             ),
           );
         } else {
