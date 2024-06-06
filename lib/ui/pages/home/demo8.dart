@@ -67,6 +67,7 @@ class _Demo8State extends State<Demo8> {
 
   Future<void> readFile() async {
     final Directory appDir = await path_provider.getApplicationSupportDirectory();
+    JLogger.w("存储路径:$appDir");
     final Uint8List imageData = await File(path.join(appDir.path, '51509388947_4b5b9a36a4_b.bmp')).readAsBytes();
     if (context.mounted) {
       return showDialog(

@@ -30,7 +30,8 @@ dependencies:
   collection: ^1.17.1
   cj_kit:
     git:
-      url: git@github.com:chenjun1127/flutter-cj-kit.git
+      url: https://github.com/chenjun1127/flutter-cj-kit.git
+      ref: 0.0.4-dev
   provider: ^6.1.2
   path_provider: ^2.1.2
   mobx: ^2.3.3+2

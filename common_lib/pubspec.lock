@@ -125,9 +125,9 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "4be3f9ed78502e14bc4bf14eeb71732eb3c5b01f"
-      url: "git@github.com:chenjun1127/flutter-cj-kit.git"
+      ref: "0.0.4-dev"
+      resolved-ref: cb7004a0f7d506b71c0c1a9b5680f78cca013b3e
+      url: "https://github.com/chenjun1127/flutter-cj-kit.git"
     source: git
     version: "0.0.1-dev"
   clock:
