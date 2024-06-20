@@ -1,7 +1,9 @@
 import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/utils/calc_utils.dart';
 import 'package:flutter_advanced/widgets/semi_circle_slider.dart';
 import 'package:flutter_advanced/widgets/semi_circle_slider_2.dart';
+import 'package:flutter_advanced/widgets/semi_circle_slider_3.dart';
 
 class Demo10 extends StatefulWidget {
   const Demo10({super.key});
@@ -11,6 +13,8 @@ class Demo10 extends StatefulWidget {
 }
 
 class _Demo10State extends State<Demo10> {
+  double currentValue = 20;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +47,15 @@ class _Demo10State extends State<Demo10> {
                 isRtl: Directionality.of(context) == TextDirection.rtl,
                 onChange: (double progress, {bool value = false}) {
                   JLogger.i("--当前进度为2:$progress,$value");
+                },
+              ),
+              SemiCircleSlider3(
+                value: currentValue,
+                onChange: (double value, {bool isDragging = false}) {
+                  setState(() {
+                    currentValue = CalcUtils.mapValueToRange(value);
+                  });
+                  JLogger.i("--当前进度为3:$value,isDragging:$isDragging");
                 },
               ),
             ],
