@@ -1,6 +1,9 @@
 import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
 
+/// @author chenjun
+/// @date 2024-07-10
+/// @desc 仿iphone垂直滑动条
 class VerticalBrightnessSlider extends StatefulWidget {
   const VerticalBrightnessSlider({
     required this.height,

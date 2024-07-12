@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// @author chenjun
 /// @date 2024-07-10
-/// @desc 横向滑竿操作条
+/// @desc 仿IOS横向滑竿滑动条
 
 class HorizontalSlider extends StatefulWidget {
   const HorizontalSlider({
