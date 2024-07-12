@@ -114,7 +114,7 @@ linter:
     - leading_newlines_in_multiline_strings
     - library_names
     - library_prefixes
-    - library_private_types_in_public_api #2.13.0 暂时无法生效
+    #- library_private_types_in_public_api #2.13.0 暂时无法生效
     #- lines_longer_than_80_chars #可以修改为120
     #- missing_whitespace_between_adjacent_strings #对中文字符串基本无意义
     #- no_default_cases #实验性 可选
