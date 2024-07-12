@@ -11,15 +11,20 @@ class Demo15 extends StatelessWidget {
       appBar: AppBar(
         title: const Text("canvas 绘制带渐变的圆形进度条"),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircularGradientBar(),
-            CircularProgressBar(
-              progress: 0.6,
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          width: 1000,
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              CircularGradientBar(),
+              CircularProgressBar(
+                progress: 0.6,
+              ),
+            ],
+          ),
         ),
       ),
     );

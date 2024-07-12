@@ -16,7 +16,7 @@ class _Demo16State extends State<Demo16> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         title: const Text("canvas 绘制进度条"),
       ),
