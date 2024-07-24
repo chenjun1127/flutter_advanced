@@ -15,6 +15,7 @@ void main() {
       PaintingBinding.instance.imageCache.maximumSize = 200;
       PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
       CommonBindings.init();
+      FPSUtils().addTimingsCallback();
       await CommonLib.init(navigatorKey: navigatorKey);
     },
   );

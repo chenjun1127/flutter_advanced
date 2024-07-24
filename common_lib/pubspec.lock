@@ -125,8 +125,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0.0.4-dev"
-      resolved-ref: cb7004a0f7d506b71c0c1a9b5680f78cca013b3e
+      ref: "0.0.5-dev"
+      resolved-ref: "4bfb6bb233f18a59ad4628b1ce5b25cc9d595752"
       url: "https://github.com/chenjun1127/flutter-cj-kit.git"
     source: git
     version: "0.0.1-dev"
