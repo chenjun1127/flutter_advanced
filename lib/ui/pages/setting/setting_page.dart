@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 
-import '../../../routes/filter_gradient.dart';
+import '../../../routes/scale_page_route.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
