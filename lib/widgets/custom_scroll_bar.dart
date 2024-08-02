@@ -2,7 +2,7 @@ import 'package:common_lib/common_lib.dart';
 import 'package:flutter/material.dart';
 
 class CustomScrollBar extends StatefulWidget {
-  const CustomScrollBar({super.key, this.scrollController, required this.builder});
+  const CustomScrollBar({required this.builder, super.key, this.scrollController});
 
   final Widget Function(BuildContext context, ScrollController scrollController) builder;
   final ScrollController? scrollController;
@@ -38,8 +38,8 @@ class _CustomScrollBarState extends State<CustomScrollBar> {
 }
 
 class _BuildScrollBar extends StatefulWidget {
-  const _BuildScrollBar({required this.scrollController, this.duration = const Duration(milliseconds: 300), Key? key})
-      : super(key: key);
+  const _BuildScrollBar({required this.scrollController, Duration? duration})
+      : duration = duration ?? const Duration(milliseconds: 200);
   final ScrollController scrollController;
   final Duration duration;
 

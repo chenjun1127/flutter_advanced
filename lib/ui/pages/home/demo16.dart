@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced/widgets/horizontal_animate_slider.dart';
 import 'package:flutter_advanced/widgets/horizontal_slider.dart';
 import 'package:flutter_advanced/widgets/vertical_brightness_slider.dart';
 import 'package:flutter_advanced/widgets/vertical_color_slider.dart';
@@ -25,6 +26,8 @@ class _Demo16State extends State<Demo16> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const HorizontalSlider(width: 300),
+            const SizedBox(height: 20),
+            const HorizontalAnimateSlider(width: 300, bgColor: Colors.grey, foreColor: Colors.amber, pointSize: 30),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
