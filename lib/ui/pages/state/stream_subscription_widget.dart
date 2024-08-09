@@ -1,5 +1,5 @@
-import 'package:common_lib/controller/stream_controller.dart';
-import 'package:common_lib/entity/user_info.dart';
+import 'package:biz_lib/controller/stream_controller.dart';
+import 'package:biz_lib/entity/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/ui/pages/state/value_notifier_widget.dart';

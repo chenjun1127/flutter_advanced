@@ -1,4 +1,4 @@
-# common_lib
+# biz_lib
 
 A new Flutter module project.
 

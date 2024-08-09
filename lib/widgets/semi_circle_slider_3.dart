@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:common_lib/common_lib.dart';
+import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/utils/calc_utils.dart';
 import 'package:flutter_advanced/widgets/painter_arc.dart';

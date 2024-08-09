@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
-import 'package:common_lib/common_lib.dart';
-import 'package:common_lib/entity/physical_device.dart';
+import 'package:biz_lib/biz_lib.dart';
+import 'package:biz_lib/entity/physical_device.dart';
 
 class DeviceController extends GetxController {
   static DeviceController get to => Get.find();

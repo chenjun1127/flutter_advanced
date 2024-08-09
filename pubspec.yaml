@@ -39,8 +39,8 @@ dependencies:
   http: ^0.13.5
   rect_getter: ^1.1.0
   # 添加子模块依赖
-  common_lib:
-    path: ./common_lib
+  biz_lib:
+    path: ./biz_lib
 
 
 dev_dependencies:

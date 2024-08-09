@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:common_lib/common_lib.dart';
+import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 

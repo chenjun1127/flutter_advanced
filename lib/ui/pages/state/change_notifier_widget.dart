@@ -1,6 +1,6 @@
+import 'package:biz_lib/entity/counter.dart';
+import 'package:biz_lib/entity/user_info.dart';
 import 'package:cj_kit/logger/j_logger.dart';
-import 'package:common_lib/entity/counter.dart';
-import 'package:common_lib/entity/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

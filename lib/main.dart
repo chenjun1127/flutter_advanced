@@ -1,4 +1,4 @@
-import 'package:common_lib/common_lib.dart';
+import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/routes/routes.dart';
@@ -16,7 +16,7 @@ void main() {
       PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
       CommonBindings.init();
       FPSUtils().addTimingsCallback();
-      await CommonLib.init(navigatorKey: navigatorKey);
+      await BizLib.init(navigatorKey: navigatorKey);
     },
   );
 }

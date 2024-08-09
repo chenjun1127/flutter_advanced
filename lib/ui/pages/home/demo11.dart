@@ -1,6 +1,6 @@
-import 'package:common_lib/common_lib.dart';
-import 'package:common_lib/entity/virtual_device.dart';
-import 'package:common_lib/stores/root_store.dart';
+import 'package:biz_lib/biz_lib.dart';
+import 'package:biz_lib/entity/virtual_device.dart';
+import 'package:biz_lib/stores/root_store.dart';
 import 'package:flutter/material.dart';
 
 class Demo11 extends StatefulWidget {

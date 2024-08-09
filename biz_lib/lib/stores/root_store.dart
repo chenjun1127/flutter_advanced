@@ -1,4 +1,4 @@
-import 'package:common_lib/stores/device_store.dart';
+import 'package:biz_lib/stores/device_store.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 

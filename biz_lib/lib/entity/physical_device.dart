@@ -1,4 +1,4 @@
-import 'package:common_lib/entity/base_device.dart';
+import 'package:biz_lib/entity/base_device.dart';
 
 class PhysicalDevice extends BaseDevice<PhysicalDevice> {
   PhysicalDevice({String? deviceId, String? deviceName, String? createTime, int? value, int? type, this.desc})

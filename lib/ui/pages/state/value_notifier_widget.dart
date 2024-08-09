@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:common_lib/controller/stream_controller.dart';
-import 'package:common_lib/entity/user_info.dart';
+import 'package:biz_lib/controller/stream_controller.dart';
+import 'package:biz_lib/entity/user_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';
 

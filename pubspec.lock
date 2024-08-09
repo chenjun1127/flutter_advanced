@@ -17,6 +17,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.11.0"
+  biz_lib:
+    dependency: "direct main"
+    description:
+      path: biz_lib
+      relative: true
+    source: path
+    version: "1.0.0+1"
   boolean_selector:
     dependency: transitive
     description:
@@ -58,13 +65,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.17.1"
-  common_lib:
-    dependency: "direct main"
-    description:
-      path: common_lib
-      relative: true
-    source: path
-    version: "1.0.0+1"
   crypto:
     dependency: transitive
     description:

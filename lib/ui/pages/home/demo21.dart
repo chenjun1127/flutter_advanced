@@ -37,7 +37,7 @@ class _Demo21State extends State<Demo21> {
             color: Colors.blue,
           ),
           child: Text(
-            "1113123213",
+            "To second page",
             style: FontStyle.defaultTitle.copyWith(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
           ),
         ),
@@ -52,7 +52,7 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(title: const Text('Second Page')),
       body: Container(
         alignment: Alignment.center,

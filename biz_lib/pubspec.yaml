@@ -1,4 +1,4 @@
-name: common_lib
+name: biz_lib
 description: A new Flutter module project.
 
 # The following defines the version and build number for your application.
@@ -99,5 +99,5 @@ flutter:
   # identifiers, which may be completely independent or the same as these.
   module:
     androidX: true
-    androidPackage: com.example.common_lib
-    iosBundleIdentifier: com.example.commonLib
+    androidPackage: com.example.biz_lib
+    iosBundleIdentifier: com.example.biz_lib

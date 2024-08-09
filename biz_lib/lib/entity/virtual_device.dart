@@ -1,4 +1,4 @@
-import 'package:common_lib/entity/base_device.dart';
+import 'package:biz_lib/entity/base_device.dart';
 import 'package:mobx/mobx.dart';
 
 class VirtualDevice extends BaseDevice<VirtualDevice> {
