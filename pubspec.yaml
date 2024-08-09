@@ -68,7 +68,6 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -80,6 +79,31 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: NanumGothic-Regular
+      fonts:
+        - asset: assets/fonts/NanumGothic-Regular.ttf
+    - family: OPPOSans-M
+      fonts:
+        - asset: assets/fonts/OPPOSans-M.ttf
+    - family: NotoSansThai-Regular
+      fonts:
+        - asset: assets/fonts/NotoSansThai-Regular.ttf
+    - family: SourceSansPro-Regular
+      fonts:
+        - asset: assets/fonts/SourceSansPro-Regular.ttf
+    - family: Amiri-Regular
+      fonts:
+        - asset: assets/fonts/Amiri-Regular.ttf
+    - family: Rubik-Regular
+      fonts:
+        - asset: assets/fonts/Rubik-Regular.ttf
+    - family: Cochin
+      fonts:
+        - asset: assets/fonts/Cochin.ttf
+    - family: MainFont
+      fonts:
+        - asset: assets/fonts/MiSans-Normal.otf
   # fonts:
   #   - family: Schyler
   #     fonts:

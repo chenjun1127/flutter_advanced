@@ -17,6 +17,7 @@ import 'package:flutter_advanced/ui/pages/home/demo18.dart';
 import 'package:flutter_advanced/ui/pages/home/demo19.dart';
 import 'package:flutter_advanced/ui/pages/home/demo2.dart';
 import 'package:flutter_advanced/ui/pages/home/demo20.dart';
+import 'package:flutter_advanced/ui/pages/home/demo21.dart';
 import 'package:flutter_advanced/ui/pages/home/demo3.dart';
 import 'package:flutter_advanced/ui/pages/home/demo4.dart';
 import 'package:flutter_advanced/ui/pages/home/demo5.dart';
@@ -53,6 +54,7 @@ final Map<String, WidgetBuilder> baseRoute = <String, WidgetBuilder>{
   "demo18": (BuildContext context, {dynamic arguments}) => const Demo18(),
   "demo19": (BuildContext context, {dynamic arguments}) => const Demo19(),
   "demo20": (BuildContext context, {dynamic arguments}) => const Demo20(),
+  "demo21": (BuildContext context, {dynamic arguments}) => const Demo21(),
 };
 
 final Map<String, WidgetBuilder> routeMap = <String, WidgetBuilder>{

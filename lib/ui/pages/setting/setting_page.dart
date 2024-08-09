@@ -16,22 +16,21 @@ class _SettingPageState extends State<SettingPage> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            ElevatedButton(onPressed: _onPressed, child: const Text("点击跳转")),
-            ElevatedButton(onPressed: toPge, child: const Text("点击跳转2"))
+            ElevatedButton(onPressed: _onPressed, child: const Text("点击跳转1")),
+            ElevatedButton(onPressed: _toPage, child: const Text("点击跳转2")),
           ],
         ),
       ),
     );
   }
 
-  void toPge() {
+  void _toPage() {
     scalePageRoute(
-        builder: (BuildContext context) {
-          return const SecondPage();
-        },
-        context: context);
-    // Navigator.of(context).push(createRoute1(SecondPage()));
-    // Navigator.of(context).push(_createRoute());
+      builder: (BuildContext context) {
+        return const SecondPage();
+      },
+      context: context,
+    );
   }
 
   void _onPressed() {
