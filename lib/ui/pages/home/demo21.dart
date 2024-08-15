@@ -1,5 +1,5 @@
+import 'package:common_ui/styles/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced/styles/styles.dart';
 
 class Demo21 extends StatefulWidget {
   const Demo21({super.key});

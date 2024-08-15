@@ -7,6 +7,13 @@ class DeviceController extends GetxController {
   static DeviceController get to => Get.find();
   final RxList<PhysicalDevice> deviceList = <PhysicalDevice>[].obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    JLogger.d("DeviceController onInit");
+    createAndProcessDeviceList();
+  }
+
   void updateDeviceList(List<PhysicalDevice> list) {
     deviceList.assignAll(list);
   }
@@ -60,13 +67,15 @@ class DeviceController extends GetxController {
     final int index = deviceList.indexWhere((PhysicalDevice e) => e.deviceId == deviceId);
     if (index != -1) {
       final PhysicalDevice device = deviceList[index];
-      device.update(device: PhysicalDevice(
-        deviceId: device.deviceId,
-        deviceName: device.deviceName,
-        createTime: device.createTime,
-        value: 1500,
-        type: device.type,
-      ));
+      device.update(
+        device: PhysicalDevice(
+          deviceId: device.deviceId,
+          deviceName: device.deviceName,
+          createTime: device.createTime,
+          value: 1500,
+          type: device.type,
+        ),
+      );
       deviceList[index] = device;
     }
   }

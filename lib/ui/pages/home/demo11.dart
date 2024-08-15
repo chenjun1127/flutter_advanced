@@ -78,10 +78,4 @@ class _Demo11State extends State<Demo11> {
       ),
     );
   }
-
-  @override
-  void initState() {
-    super.initState();
-    JLogger.i("initState:111111111111");
-  }
 }

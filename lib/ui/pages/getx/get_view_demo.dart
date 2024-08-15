@@ -1,5 +1,4 @@
 import 'package:biz_lib/biz_lib.dart';
-import 'package:biz_lib/controller/awesome_controller.dart';
 import 'package:flutter/material.dart';
 
 class GetViewDemo extends GetView<AwesomeController> {

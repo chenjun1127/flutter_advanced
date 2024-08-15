@@ -38,8 +38,8 @@ dependencies:
   flutter_mobx: ^2.2.1+1
   path: ^1.8.3
   get_storage: ^2.1.1
-  get: ^4.6.5
   event_bus: ^2.0.0
+  get: ^4.6.5
 
 
 dev_dependencies:
