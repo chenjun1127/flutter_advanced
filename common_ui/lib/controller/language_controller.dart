@@ -6,7 +6,7 @@ class LanguageController extends GetxController {
   static LanguageController get to => Get.find();
   final Rx<String> _languageCode = (LanguageConst.english).obs;
 
-  set language(LanguageType value) { print('Switching language to: ${value.name}');
+  set language(LanguageType value) {
     Get.updateLocale(value.locale);
     _languageCode.value = value.locale.code;
   }

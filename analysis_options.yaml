@@ -25,7 +25,7 @@ linter:
     - always_use_package_imports
     - avoid_dynamic_calls
     - avoid_empty_else
-    #- avoid_print
+    - avoid_print
     #- avoid_relative_lib_imports #和 prefer_relative_imports 一起使用 冲突 always_use_package_imports
     - avoid_returning_null_for_future
     - avoid_slow_async_io

@@ -160,7 +160,6 @@ class _ScrollBarPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    print("fractionOfThumb:$fractionOfThumb index:$index progress:$progress");
     final Paint paint = Paint()
       ..color = Colors.blue
       ..strokeCap = StrokeCap.round;
