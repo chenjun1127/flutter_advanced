@@ -44,7 +44,6 @@ dependencies:
   common_ui:
     path: ./common_ui
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

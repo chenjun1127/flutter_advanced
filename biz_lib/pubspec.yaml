@@ -1,6 +1,6 @@
 name: biz_lib
 description: A new Flutter module project.
-
+publish_to: none
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
 # followed by an optional build number separated by a +.
@@ -28,10 +28,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   collection: ^1.17.1
-  cj_kit:
-    git:
-      url: https://github.com/chenjun1127/flutter-cj-kit.git
-      ref: 0.0.5-dev
   provider: ^6.1.2
   path_provider: ^2.1.2
   mobx: ^2.3.3+2
@@ -40,7 +36,8 @@ dependencies:
   get_storage: ^2.1.1
   event_bus: ^2.0.0
   get: ^4.6.5
-
+  common_lib:
+    path: ../common_lib
 
 dev_dependencies:
   flutter_test:

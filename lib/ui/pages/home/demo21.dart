@@ -1,6 +1,5 @@
 import 'package:common_ui/styles/styles.dart';
 import 'package:flutter/material.dart';
-
 class Demo21 extends StatefulWidget {
   const Demo21({super.key});
 
@@ -9,6 +8,7 @@ class Demo21 extends StatefulWidget {
 }
 
 class _Demo21State extends State<Demo21> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

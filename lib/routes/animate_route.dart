@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 
 ///渐隐动画路由
 class FadeRouter<T> extends PageRouteBuilder<T> {
-  FadeRouter({this.child, this.duration = 300, this.curve = Curves.linear})
+  FadeRouter({this.child, this.duration = 300, this.curve = Curves.linear, RouteSettings? routeSettings})
       : super(
           pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) =>
               child!,
           transitionDuration: Duration(milliseconds: duration),
+          settings: routeSettings,
           transitionsBuilder:
               (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
             return FadeTransition(
@@ -15,6 +16,7 @@ class FadeRouter<T> extends PageRouteBuilder<T> {
             );
           },
         );
+
   final Widget? child;
   final int duration;
   final Curve curve;

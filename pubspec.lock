@@ -73,6 +73,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.17.1"
+  common_lib:
+    dependency: transitive
+    description:
+      path: common_lib
+      relative: true
+    source: path
+    version: "1.0.0"
   common_ui:
     dependency: "direct main"
     description:

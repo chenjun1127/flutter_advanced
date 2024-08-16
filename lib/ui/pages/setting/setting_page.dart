@@ -8,6 +8,7 @@ import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/scale_page_route.dart';
 import 'package:flutter_advanced/ui/pages/setting/select_language.dart';
 import 'package:flutter_advanced/widgets/center_dialog.dart';
+import 'package:common_lib/common_lib.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -66,6 +67,7 @@ class _SettingPageState extends State<SettingPage> {
 
   void _toPage() {
     scalePageRoute(
+      settings: const RouteSettings(name: "SecondPage"),
       builder: (BuildContext context) {
         return const SecondPage();
       },
@@ -83,6 +85,12 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
+
+  @override
+  void initState() {
+    JLogger.i("当前路由:${RouteController.to.currentRoute}");
+    super.initState();
+  }
 }
 
 class SecondPage extends StatelessWidget {
@@ -99,6 +107,7 @@ class SecondPage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
+                JLogger.i("当前路由:${RouteController.to.currentRoute}");
                 Navigator.pop(context);
               },
               child: const Text('Go Back'),

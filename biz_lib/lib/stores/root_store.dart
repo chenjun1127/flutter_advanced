@@ -11,7 +11,11 @@ final RootStore rootStore = RootStore();
 abstract class _RootStore with Store {
   late DeviceStore deviceStore;
 
+  BuildContext get currentContext => navigatorKey.currentContext!; // 当前context
+  late GlobalKey<NavigatorState> navigatorKey;
+
   void initStore({required GlobalKey<NavigatorState> navigatorKey}) {
+    this.navigatorKey = navigatorKey;
     deviceStore = DeviceStore();
   }
 }

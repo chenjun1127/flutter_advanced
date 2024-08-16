@@ -122,7 +122,7 @@ packages:
     source: hosted
     version: "2.0.3"
   cj_kit:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "."
       ref: "0.0.5-dev"
@@ -154,6 +154,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.17.1"
+  common_lib:
+    dependency: "direct main"
+    description:
+      path: "../common_lib"
+      relative: true
+    source: path
+    version: "1.0.0"
   convert:
     dependency: transitive
     description:

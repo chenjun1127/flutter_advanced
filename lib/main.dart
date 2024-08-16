@@ -1,9 +1,11 @@
 import 'package:biz_lib/biz_lib.dart';
+import 'package:common_lib/common_lib.dart';
 import 'package:common_ui/common_ui.dart';
 import 'package:common_ui/generated/locales.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced/fix/fix.dart';
+import 'package:flutter_advanced/routes/custom_navigator_observer.dart';
 import 'package:flutter_advanced/routes/routes.dart';
 import 'package:flutter_advanced/ui/home_layout.dart';
 import 'package:flutter_advanced/ui/not_found_page.dart';
@@ -40,11 +42,13 @@ class _MyAppState extends State<MyApp> {
       scrollBehavior: fixDesktopPlatformDragDevice(),
       theme: ThemeData(primarySwatch: Colors.blue),
       initialBinding: BindingsBuilder<void>(() {
+        Get.put(RouteController(), permanent: true);
         Get.put(AwesomeController(), permanent: true);
         Get.put(DeviceController(), permanent: true);
         Get.put(LanguageController(), permanent: true);
       }),
       onGenerateRoute: Routes.onGenerateRoute,
+      initialRoute: HomeLayout.routeName,
       home: const HomeLayout(),
       locale: const Locale(LanguageConst.simple_chinese),
       // 默认语言
@@ -53,6 +57,9 @@ class _MyAppState extends State<MyApp> {
       translationsKeys: AppTranslation.translations,
       // 直接使用翻译数据: ,
       onUnknownRoute: (_) => MaterialPageRoute<dynamic>(builder: (BuildContext context) => const NotFoundPage()),
+      navigatorObservers: <NavigatorObserver>[
+        CustomNavigatorObserver(),
+      ],
     );
   }
 }

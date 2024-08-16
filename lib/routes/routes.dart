@@ -71,7 +71,7 @@ class Routes {
   ///路由配置
   static Map<String, WidgetBuilder> initRoutes() {
     return <String, WidgetBuilder>{
-      '/': (BuildContext context, {dynamic arguments}) => const HomeLayout(),
+      HomeLayout.routeName: (BuildContext context, {dynamic arguments}) => const HomeLayout(),
       ...baseRoute,
       ...routeMap,
       ...getXRouteMap,
@@ -101,7 +101,7 @@ class Routes {
           settings: settings,
         ); //此处将参数传递给ModalRoute
       } else {
-        return MaterialPageRoute<dynamic>(builder: builder);
+        return MaterialPageRoute<dynamic>(builder: builder, settings: settings);
       }
     }
     return null;

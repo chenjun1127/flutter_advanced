@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:common_lib/common_lib.dart';
 import 'package:common_ui/common_ui.dart';
 
 class LanguageController extends GetxController {
@@ -7,6 +7,7 @@ class LanguageController extends GetxController {
   final Rx<String> _languageCode = (LanguageConst.english).obs;
 
   set language(LanguageType value) {
+    JLogger.i("LanguageController set value:$value");
     Get.updateLocale(value.locale);
     _languageCode.value = value.locale.code;
   }
