@@ -21,6 +21,7 @@ void main() {
       PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
       FPSUtils().addTimingsCallback();
       await BizLib.init(navigatorKey: navigatorKey);
+      CommonUi.setOnTap(() => JLogger.i("回调测试-controller是否注册:${Get.isRegistered<DeviceController>()}"));
     },
   );
 }

@@ -1,3 +1,6 @@
+import 'package:common_ui/common_ui.dart';
+import 'package:common_ui/iconfont/icon_font.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/ui/pages/getx/getx_page.dart';
 import 'package:flutter_advanced/ui/pages/home/home_page.dart';
@@ -48,6 +51,21 @@ class _HomeLayoutState extends State<HomeLayout> {
         items: itemBarList.map((ItemBar e) => BottomNavigationBarItem(icon: e.icon, label: e.title)).toList(),
       ),
       body: itemBarList[currentIndex].page,
+      floatingActionButton: CupertinoButton(
+        onPressed: CommonUi.onTap,
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.green.shade400),
+          child: Center(
+            child: IconFont(
+              IconNames.zan,
+              color: "#ffffff",
+              size: 26,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
