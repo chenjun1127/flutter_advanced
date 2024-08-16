@@ -1,5 +1,5 @@
 import 'package:biz_lib/biz_lib.dart';
-import 'package:common_ui/common_ui.dart';
+import 'package:common_lib/common_lib.dart';
 import 'package:common_ui/generated/locales.g.dart';
 import 'package:common_ui/iconfont/icon_font.dart';
 import 'package:common_ui/widgets/custom_icon_button.dart';
@@ -8,7 +8,6 @@ import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/scale_page_route.dart';
 import 'package:flutter_advanced/ui/pages/setting/select_language.dart';
 import 'package:flutter_advanced/widgets/center_dialog.dart';
-import 'package:common_lib/common_lib.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
