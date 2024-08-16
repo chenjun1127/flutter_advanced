@@ -6,6 +6,7 @@ import 'package:flutter_advanced/ui/pages/state/state_page.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
+  static const String routeName = 'home';
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
