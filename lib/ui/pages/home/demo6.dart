@@ -5,6 +5,8 @@ import 'package:flutter_advanced/widgets/base_container.dart';
 
 class Demo6 extends StatefulWidget {
   const Demo6({Key? key}) : super(key: key);
+  static String routeName = 'demo6';
+  static String title = 'CustomPainter';
 
   @override
   State<Demo6> createState() => _Demo6State();
@@ -15,35 +17,41 @@ class _Demo6State extends State<Demo6> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("CustomPainter")),
-      body: BaseContainer(
-        child: Container(
-          color: Colors.teal,
-          height: MediaQuery.of(context).size.height,
-          //点击刷新时避免重绘
-          child: RepaintBoundary(
-            child: CustomPaint(
-              painter: MyPainter(radius: radius),
+    return BaseContainer(
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(
+            color: Colors.teal,
+            height: MediaQuery.of(context).size.height,
+            //点击刷新时避免重绘
+            child: RepaintBoundary(
+              child: CustomPaint(
+                painter: MyPainter(radius: radius),
+              ),
             ),
           ),
-        ),
-      ),
-      floatingActionButton: SizedBox(
-        height: 50,
-        width: 160,
-        child: ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-          ),
-          onPressed: () {
-            setState(() {
-              radius = radius >= 150 ? 100 : radius += 10;
-            });
-          },
-          child: const Text('点击改变radius'),
-        ),
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: SizedBox(
+              height: 50,
+              width: 160,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                ),
+                onPressed: () {
+                  setState(() {
+                    radius = radius >= 150 ? 100 : radius += 10;
+                  });
+                },
+                child: const Text('点击改变radius'),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

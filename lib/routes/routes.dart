@@ -1,61 +1,51 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Page;
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
 import 'package:flutter_advanced/ui/home_layout.dart';
 import 'package:flutter_advanced/ui/pages/getx/get_view_demo.dart';
 import 'package:flutter_advanced/ui/pages/getx/obx_list_demo.dart';
-import 'package:flutter_advanced/ui/pages/home/demo1.dart';
-import 'package:flutter_advanced/ui/pages/home/demo10.dart';
-import 'package:flutter_advanced/ui/pages/home/demo11.dart';
-import 'package:flutter_advanced/ui/pages/home/demo12.dart';
-import 'package:flutter_advanced/ui/pages/home/demo13.dart';
-import 'package:flutter_advanced/ui/pages/home/demo14.dart';
-import 'package:flutter_advanced/ui/pages/home/demo15.dart';
-import 'package:flutter_advanced/ui/pages/home/demo16.dart';
-import 'package:flutter_advanced/ui/pages/home/demo17.dart';
-import 'package:flutter_advanced/ui/pages/home/demo18.dart';
-import 'package:flutter_advanced/ui/pages/home/demo19.dart';
-import 'package:flutter_advanced/ui/pages/home/demo2.dart';
-import 'package:flutter_advanced/ui/pages/home/demo20.dart';
-import 'package:flutter_advanced/ui/pages/home/demo21.dart';
-import 'package:flutter_advanced/ui/pages/home/demo3.dart';
-import 'package:flutter_advanced/ui/pages/home/demo4.dart';
-import 'package:flutter_advanced/ui/pages/home/demo5.dart';
-import 'package:flutter_advanced/ui/pages/home/demo6.dart';
-import 'package:flutter_advanced/ui/pages/home/demo7.dart';
-import 'package:flutter_advanced/ui/pages/home/demo8.dart';
-import 'package:flutter_advanced/ui/pages/home/demo9.dart';
+import 'package:flutter_advanced/ui/pages/home/index.dart';
 import 'package:flutter_advanced/ui/pages/state/change_notifier_widget.dart';
 import 'package:flutter_advanced/ui/pages/state/stream_subscription_widget.dart';
 import 'package:flutter_advanced/ui/pages/state/value_notifier_widget.dart';
+import 'package:flutter_advanced/widgets/page_scaffold.dart';
 
-final List<int> routeList = List<int>.generate(baseRoute.values.length, (int index) => index);
+final List<int> routeList = List<int>.generate(getRoutes().length, (int index) => index);
 
 typedef WidgetBuilder = Widget Function(BuildContext context, {dynamic arguments});
 
-final Map<String, WidgetBuilder> baseRoute = <String, WidgetBuilder>{
-  "demo1": (BuildContext context, {dynamic arguments}) => const Demo1(),
-  "demo2": (BuildContext context, {dynamic arguments}) => const Demo2(),
-  "demo3": (BuildContext context, {dynamic arguments}) => const Demo3(),
-  "demo4": (BuildContext context, {dynamic arguments}) => const Demo4(),
-  "demo5": (BuildContext context, {dynamic arguments}) => const Demo5(),
-  "demo6": (BuildContext context, {dynamic arguments}) => const Demo6(),
-  "demo7": (BuildContext context, {dynamic arguments}) => const Demo7(),
-  "demo8": (BuildContext context, {dynamic arguments}) => const Demo8(),
-  "demo9": (BuildContext context, {dynamic arguments}) => const Demo9(),
-  "demo10": (BuildContext context, {dynamic arguments}) => const Demo10(),
-  "demo11": (BuildContext context, {dynamic arguments}) => const Demo11(),
-  "demo12": (BuildContext context, {dynamic arguments}) => const Demo12(),
-  "demo13": (BuildContext context, {dynamic arguments}) => const Demo13(),
-  "demo14": (BuildContext context, {dynamic arguments}) => const Demo14(),
-  "demo15": (BuildContext context, {dynamic arguments}) => const Demo15(),
-  "demo16": (BuildContext context, {dynamic arguments}) => const Demo16(),
-  "demo17": (BuildContext context, {dynamic arguments}) => const Demo17(),
-  "demo18": (BuildContext context, {dynamic arguments}) => const Demo18(),
-  "demo19": (BuildContext context, {dynamic arguments}) => const Demo19(),
-  "demo20": (BuildContext context, {dynamic arguments}) => const Demo20(),
-  "demo21": (BuildContext context, {dynamic arguments}) => const Demo21(),
-};
+List<Page> getRoutes() {
+  return <Page>[
+    Page(Demo1.title, Demo1.routeName, const Demo1()),
+    Page(Demo2.title, Demo2.routeName, const Demo2()),
+    Page(Demo3.title, Demo3.routeName, const Demo3()),
+    Page(Demo4.title, Demo4.routeName, const Demo4()),
+    Page(Demo5.title, Demo5.routeName, const Demo5()),
+    Page(Demo6.title, Demo6.routeName, const Demo6()),
+    Page(Demo7.title, Demo7.routeName, const Demo7(), withScaffold: false),
+    Page(Demo8.title, Demo8.routeName, const Demo8()),
+    Page(Demo9.title, Demo9.routeName, const Demo9()),
+    Page(Demo10.title, Demo10.routeName, const Demo10()),
+    Page(Demo11.title, Demo11.routeName, const Demo11()),
+    Page(Demo12.title, Demo12.routeName, const Demo12()),
+    Page(Demo13.title, Demo13.routeName, const Demo13()),
+    Page(Demo14.title, Demo14.routeName, const Demo14()),
+    Page(Demo15.title, Demo15.routeName, const Demo15()),
+    Page(Demo16.title, Demo16.routeName, const Demo16()),
+    Page(Demo17.title, Demo17.routeName, const Demo17()),
+    Page(Demo18.title, Demo18.routeName, const Demo18()),
+    Page(Demo19.title, Demo19.routeName, const Demo19()),
+    Page(Demo20.title, Demo20.routeName, const Demo20()),
+    Page(Demo21.title, Demo21.routeName, const Demo21()),
+  ];
+}
+
+Map<String, WidgetBuilder> mapRoutes(List<Page> pages) {
+  return pages.fold(<String, WidgetBuilder>{}, (Map<String, WidgetBuilder> pre, Page page) {
+    pre[page.routeName] = page.builder;
+    return pre;
+  });
+}
 
 final Map<String, WidgetBuilder> routeMap = <String, WidgetBuilder>{
   ChangeNotifierWidget.routeName: (BuildContext context, {dynamic arguments}) => const ChangeNotifierWidget(),
@@ -72,7 +62,7 @@ class Routes {
   static Map<String, WidgetBuilder> initRoutes() {
     return <String, WidgetBuilder>{
       HomeLayout.routeName: (BuildContext context, {dynamic arguments}) => const HomeLayout(),
-      ...baseRoute,
+      ...mapRoutes(getRoutes()),
       ...routeMap,
       ...getXRouteMap,
     };
@@ -96,10 +86,7 @@ class Routes {
             return route;
           }
         }
-        return MaterialPageRoute<dynamic>(
-          builder: (BuildContext context) => builder(context, arguments: settings.arguments),
-          settings: settings,
-        ); //此处将参数传递给ModalRoute
+        return MaterialPageRoute<dynamic>(builder: builder, settings: settings); //此处将参数传递给ModalRoute
       } else {
         return MaterialPageRoute<dynamic>(builder: builder, settings: settings);
       }

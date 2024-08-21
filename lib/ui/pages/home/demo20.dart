@@ -4,6 +4,9 @@ import 'package:flutter_advanced/widgets/circle_button.dart';
 class Demo20 extends StatefulWidget {
   const Demo20({super.key});
 
+  static String title = '动画效果';
+  static String routeName = 'demo20';
+
   @override
   State<Demo20> createState() => _Demo20State();
 }
@@ -11,11 +14,7 @@ class Demo20 extends StatefulWidget {
 class _Demo20State extends State<Demo20> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text("动画效果")),
-      body: Container(alignment: Alignment.center, child: const FadeInFromBottomTextWidget()),
-    );
+    return Container(alignment: Alignment.center, child: const FadeInFromBottomTextWidget());
   }
 }
 

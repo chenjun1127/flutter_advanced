@@ -1,21 +1,20 @@
 import 'package:common_ui/styles/styles.dart';
 import 'package:flutter/material.dart';
+
 class Demo21 extends StatefulWidget {
   const Demo21({super.key});
+
+  static String title = 'Hero过渡动画效果';
+  static String routeName = 'demo21';
 
   @override
   State<Demo21> createState() => _Demo21State();
 }
 
 class _Demo21State extends State<Demo21> {
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text("Hero过渡动画效果")),
-      body: Container(alignment: Alignment.center, child: _buildButton()),
-    );
+    return Container(alignment: Alignment.center, child: _buildButton());
   }
 
   Widget _buildButton() {

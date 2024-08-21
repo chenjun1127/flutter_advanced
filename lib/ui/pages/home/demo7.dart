@@ -15,6 +15,8 @@ class Demo7 extends StatefulWidget {
     this.hue = 0,
     this.saturation = 100,
   }) : super(key: key);
+  static String title = 'CustomPainter Color';
+  static String routeName = 'demo7';
   final double? bigCircleRadius;
   final double? smallCircleRadius;
   final double? pointCircleSize;
@@ -86,6 +88,7 @@ class _Demo7State extends State<Demo7> {
                 ),
               ],
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: showImage,
               child: const Text('查看canvas生成的图片'),

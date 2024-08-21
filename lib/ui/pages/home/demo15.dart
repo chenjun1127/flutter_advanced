@@ -5,26 +5,24 @@ import 'package:flutter/material.dart';
 class Demo15 extends StatelessWidget {
   const Demo15({super.key});
 
+  static String title = 'Canvas 绘制带渐变的圆形进度条';
+  static String routeName = 'demo15';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("canvas 绘制带渐变的圆形进度条"),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.center,
-          width: 1000,
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              CircularGradientBar(),
-              CircularProgressBar(
-                progress: 0.6,
-              ),
-            ],
-          ),
+    return SingleChildScrollView(
+      child: Container(
+        alignment: Alignment.center,
+        width: 1000,
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            CircularGradientBar(),
+            CircularProgressBar(
+              progress: 0.6,
+            ),
+          ],
         ),
       ),
     );

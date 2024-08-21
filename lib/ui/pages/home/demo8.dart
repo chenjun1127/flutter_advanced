@@ -10,6 +10,8 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 
 class Demo8 extends StatefulWidget {
   const Demo8({Key? key}) : super(key: key);
+  static String title = 'Path Io';
+  static String routeName = 'demo8';
 
   @override
   State<Demo8> createState() => _Demo8State();
@@ -18,33 +20,28 @@ class Demo8 extends StatefulWidget {
 class _Demo8State extends State<Demo8> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Path Io'),
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              ),
-              onPressed: downloadImg,
-              child: const Text('存储网络图片'),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        children: <Widget>[
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
             ),
-            const SizedBox(width: 10),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.teal),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              ),
-              onPressed: readFile,
-              child: const Text('读取图片'),
+            onPressed: downloadImg,
+            child: const Text('存储网络图片'),
+          ),
+          const SizedBox(width: 10),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.teal),
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
             ),
-          ],
-        ),
+            onPressed: readFile,
+            child: const Text('读取图片'),
+          ),
+        ],
       ),
     );
   }

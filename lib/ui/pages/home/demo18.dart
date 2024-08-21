@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 class Demo18 extends StatefulWidget {
   const Demo18({super.key});
 
+  static String title = '自定义滚动条一';
+  static String routeName = 'demo18';
+
   @override
   State<Demo18> createState() => _Demo18State();
 }
@@ -52,28 +55,25 @@ class _Demo18State extends State<Demo18> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("自定义滚动条")),
-      body: Stack(
-        children: <Widget>[
-          ListView.builder(
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(title: Text("$index"));
-            },
-            physics: const BouncingScrollPhysics(),
-            controller: _scrollController,
-            itemCount: 100,
+    return Stack(
+      children: <Widget>[
+        ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(title: Text("$index"));
+          },
+          physics: const BouncingScrollPhysics(),
+          controller: _scrollController,
+          itemCount: 100,
+        ),
+        Positioned(
+          right: 20,
+          top: MediaQuery.of(context).size.height / 2 - 25,
+          child: CustomPaint(
+            painter: CircularScrollProgressPainter(_progress),
+            child: const SizedBox(width: 50, height: 50),
           ),
-          Positioned(
-            right: 20,
-            top: MediaQuery.of(context).size.height / 2 - 25,
-            child: CustomPaint(
-              painter: CircularScrollProgressPainter(_progress),
-              child: const SizedBox(width: 50, height: 50),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 

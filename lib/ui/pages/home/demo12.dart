@@ -6,6 +6,9 @@ import 'package:rect_getter/rect_getter.dart';
 class Demo12 extends StatefulWidget {
   const Demo12({super.key});
 
+  static String title = '获取列表可视Item/转跳到指定Index一';
+  static String routeName = 'demo12';
+
   @override
   State<Demo12> createState() => _Demo12State();
 }
@@ -50,41 +53,36 @@ class _Demo12State extends State<Demo12> {
       text: '0',
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('获取列表可视Item/转跳到指定Index一'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: NotificationListener<ScrollUpdateNotification>(
-              onNotification: (ScrollUpdateNotification notification) {
-                getVisible();
-                return true;
-              },
-              child: listView,
-            ),
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: NotificationListener<ScrollUpdateNotification>(
+            onNotification: (ScrollUpdateNotification notification) {
+              getVisible();
+              return true;
+            },
+            child: listView,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              SizedBox(
-                width: 100,
-                height: 50,
-                child: TextField(
-                  controller: textCtl,
-                ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            SizedBox(
+              width: 100,
+              height: 50,
+              child: TextField(
+                controller: textCtl,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  jumpTo(int.parse(textCtl.text));
-                },
-                child: const Text('JUMP'),
-              )
-            ],
-          ),
-        ],
-      ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                jumpTo(int.parse(textCtl.text));
+              },
+              child: const Text('JUMP'),
+            )
+          ],
+        ),
+      ],
     );
   }
 

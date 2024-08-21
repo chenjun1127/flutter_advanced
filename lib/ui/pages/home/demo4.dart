@@ -4,6 +4,8 @@ import 'package:flutter/scheduler.dart';
 
 class Demo4 extends StatefulWidget {
   const Demo4({Key? key}) : super(key: key);
+  static const String routeName = 'demo4';
+  static String title = 'SchedulerBinding';
 
   @override
   State<Demo4> createState() => _Demo4State();
@@ -13,16 +15,13 @@ class Demo4 extends StatefulWidget {
 class _Demo4State extends State<Demo4> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("SchedulerBinding")),
-      body: Container(),
-    );
+    return Container();
   }
 
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      JLogger.i("渲染完成");
+      JLogger.i("下一帧渲染完成");
     });
     super.initState();
   }

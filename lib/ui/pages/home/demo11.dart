@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 class Demo11 extends StatefulWidget {
   const Demo11({super.key});
 
+  static String title = 'mobx监听列表对象某一个值更新方法';
+  static String routeName = 'demo11';
+
   @override
   State<Demo11> createState() => _Demo11State();
 }
@@ -13,30 +16,25 @@ class Demo11 extends StatefulWidget {
 class _Demo11State extends State<Demo11> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("mobx监听列表对象某一个值更新方法"),
-      ),
-      body: Container(
-        color: Colors.green,
-        child: Observer(
-          builder: (BuildContext context) {
-            final List<VirtualDevice> list = rootStore.deviceStore.deviceList.toList();
-            return ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (BuildContext context, int index) {
-                return Observer(
-                  builder: (BuildContext context) {
-                    final VirtualDevice device = list[index];
-                    device.setUpdate();
-                    return _buildItems(device, index);
-                  },
-                );
-              },
-              itemCount: list.length,
-            );
-          },
-        ),
+    return Container(
+      color: Colors.green,
+      child: Observer(
+        builder: (BuildContext context) {
+          final List<VirtualDevice> list = rootStore.deviceStore.deviceList.toList();
+          return ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+              return Observer(
+                builder: (BuildContext context) {
+                  final VirtualDevice device = list[index];
+                  device.setUpdate();
+                  return _buildItems(device, index);
+                },
+              );
+            },
+            itemCount: list.length,
+          );
+        },
       ),
     );
   }

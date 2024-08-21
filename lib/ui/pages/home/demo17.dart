@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 class Demo17 extends StatefulWidget {
   const Demo17({super.key});
 
+  static String title = '弧形文字';
+  static String routeName = 'demo17';
+
   @override
   State<Demo17> createState() => _Demo17State();
 }
@@ -17,20 +20,14 @@ class _Demo17State extends State<Demo17> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("弧形文字"),
-      ),
-      body: Center(
-        child: CustomPaint(
-          size: const Size(400, 400),
-          painter: ArcTextPainter(
-            getVisibleText("我们一起来学习Flutter", textStyle, 220),
-            textStyle: textStyle,
-            startAngle: math.pi * 135 / 180,
-            sweepAngle: math.pi * 270 / 180,
-          ),
+    return Center(
+      child: CustomPaint(
+        size: const Size(400, 400),
+        painter: ArcTextPainter(
+          getVisibleText("我们一起来学习Flutter", textStyle, 220),
+          textStyle: textStyle,
+          startAngle: math.pi * 135 / 180,
+          sweepAngle: math.pi * 270 / 180,
         ),
       ),
     );
