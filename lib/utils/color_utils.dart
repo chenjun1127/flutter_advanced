@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 class ColorUtils {
@@ -11,5 +12,15 @@ class ColorUtils {
       }
     }
     return colors.first;
+  }
+
+  static Color generateRandomColor() {
+    final Random random = Random();
+    return Color.fromARGB(
+      255, // 固定不透明度为 255
+      random.nextInt(256), // 0-255 随机生成红色值
+      random.nextInt(256), // 0-255 随机生成绿色值
+      random.nextInt(256), // 0-255 随机生成蓝色值
+    );
   }
 }
