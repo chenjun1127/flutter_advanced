@@ -40,6 +40,7 @@ List<Page> getRoutes() {
     Page(Demo22.title, Demo22.routeName, const Demo22()),
     Page(Demo23.title, Demo23.routeName, const Demo23()),
     Page(Demo24.title, Demo24.routeName, const Demo24(), withScaffold: false),
+    Page(Demo25.title, Demo25.routeName, const Demo25()),
   ];
 }
 
