@@ -24,14 +24,14 @@ class _SettingPageState extends State<SettingPage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              CustomIconButton(
+              CustomButton(
                 icon: IconNames.zan,
                 text: "跳转1",
                 onTap: _onPressed,
                 fontSize: 16,
               ),
               const SizedBox(height: 20),
-              CustomIconButton(
+              CustomButton(
                 icon: IconNames.safe,
                 text: "跳转2",
                 onTap: _toPage,
