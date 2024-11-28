@@ -52,6 +52,7 @@ class _Demo8State extends State<Demo8> {
   Future<void> downloadImg() async {
     const String url = 'https://live.staticflickr.com/65535/51509388947_4b5b9a36a4_b.jpg';
     final http.Response response = await http.get(Uri.parse(url));
+    JLogger.i('statusCode:${response.statusCode}');
     // Uint8List t= t.bodyBytes;
     final String imageName = path.basenameWithoutExtension(url);
     JLogger.i('图片名称=====$imageName');
