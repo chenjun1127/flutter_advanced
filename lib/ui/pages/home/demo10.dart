@@ -31,13 +31,13 @@ class _Demo10State extends State<Demo10> {
             const SizedBox(height: 10),
             SemiCircleSlider(
               onChange: (double value) {
-                JLogger.i("--当前进度为1:$value");
+                JLogger.i('--当前进度为1:$value');
               },
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: const Text(
-                "下面这个更完整，支持阿拉伯语从右边滑动",
+                '下面这个更完整，支持阿拉伯语从右边滑动',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
             ),
@@ -45,7 +45,7 @@ class _Demo10State extends State<Demo10> {
               value: 10,
               isRtl: Directionality.of(context) == TextDirection.rtl,
               onChange: (double progress, {bool value = false}) {
-                JLogger.i("--当前进度为2:$progress,$value");
+                JLogger.i('--当前进度为2:$progress,$value');
               },
             ),
             SemiCircleSlider3(
@@ -54,7 +54,7 @@ class _Demo10State extends State<Demo10> {
                 setState(() {
                   currentValue = CalcUtils.mapValueToRange(value);
                 });
-                JLogger.i("--当前进度为3:$value,isDragging:$isDragging");
+                JLogger.i('--当前进度为3:$value,isDragging:$isDragging');
               },
             ),
           ],

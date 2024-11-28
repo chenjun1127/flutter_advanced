@@ -65,7 +65,7 @@ class _BrightnessSliderPainter extends CustomPainter {
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), bgPaint);
 
     final double yPos = (1 - brightness) * size.height;
-    JLogger.i("yPos:$yPos,brightness:$brightness,size.height:${size.height}");
+    JLogger.i('yPos:$yPos,brightness:$brightness,size.height:${size.height}');
 
     canvas.drawRect(
       Rect.fromLTWH(

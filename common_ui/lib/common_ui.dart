@@ -1,10 +1,10 @@
-library common_ui;
+library;
 
+export 'package:common_lib/common_lib.dart';
 export 'package:common_ui/common_ui.dart';
 export 'package:common_ui/const/language_const.dart';
 export 'package:common_ui/controller/controller.dart';
 export 'package:common_ui/styles/styles.dart';
-export 'package:get/get.dart';
 
 class CommonUi {
   factory CommonUi() => _singleton ?? CommonUi._();

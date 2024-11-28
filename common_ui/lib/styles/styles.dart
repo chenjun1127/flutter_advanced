@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FontFamily {
-  static const String mainFontFamily = "MainFont";
-  static const String oppoMedium = "OPPOSans-M";
+  static const String mainFontFamily = 'MainFont';
+  static const String oppoMedium = 'OPPOSans-M';
 
   static const List<String> fontFamilyFallback = <String>[
     'NanumGothic-Regular',

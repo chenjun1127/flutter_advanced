@@ -1,8 +1,8 @@
-import 'package:common_lib/common_lib.dart';
+import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/material.dart';
 
 class Demo9 extends StatefulWidget {
-  const Demo9({Key? key}) : super(key: key);
+  const Demo9({super.key});
   static String title = '节流防抖';
   static String routeName = 'demo9';
 
@@ -21,15 +21,15 @@ class _Demo9State extends State<Demo9> {
         children: <Widget>[
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.orangeAccent),
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              backgroundColor: WidgetStateProperty.all(Colors.orangeAccent),
+              shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
             ),
             onPressed: () {
               throttleDebounce.call(
                 waitTime: 1000,
                 lastWaitTime: 1000,
                 function: ([dynamic value]) {
-                  JLogger.i("添加1秒节流防抖${DateTime.now().millisecondsSinceEpoch},$value");
+                  JLogger.i('添加1秒节流防抖${DateTime.now().millisecondsSinceEpoch},$value');
                 },
               );
             },
@@ -38,11 +38,11 @@ class _Demo9State extends State<Demo9> {
           const SizedBox(width: 10),
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.teal),
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              backgroundColor: WidgetStateProperty.all(Colors.teal),
+              shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
             ),
             onPressed: () {
-              JLogger.i("未添加节流防抖${DateTime.now().millisecondsSinceEpoch}");
+              JLogger.i('未添加节流防抖${DateTime.now().millisecondsSinceEpoch}');
             },
             child: const Text('未添加节流防抖'),
           ),

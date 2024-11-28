@@ -98,13 +98,13 @@ extension LocaleEx on Locale {
 
 class LanguageConst {
   ///简体中文国家码
-  static const String chinese_country_code = 'CN';
+  static const String chineseCountryCode = 'CN';
 
   ///简体中文
-  static const String simple_chinese = 'zh';
+  static const String simpleChinese = 'zh';
 
   ///繁体中文
-  static const String traditional_chinese = 'zh_TW';
+  static const String traditionalChinese = 'zh_TW';
 
   ///英语
   static const String english = 'en';

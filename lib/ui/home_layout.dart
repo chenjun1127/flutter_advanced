@@ -6,7 +6,7 @@ import 'package:flutter_advanced/ui/pages/setting/setting_page.dart';
 import 'package:flutter_advanced/ui/pages/state/state_page.dart';
 
 class HomeLayout extends StatefulWidget {
-  const HomeLayout({Key? key}) : super(key: key);
+  const HomeLayout({super.key});
   static const String routeName = 'home';
 
   @override
@@ -15,12 +15,12 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   int currentIndex = 0;
-  String title = "首页";
+  String title = '首页';
   List<ItemBar> itemBarList = <ItemBar>[
-    ItemBar("首页", const HomePage(), const Icon(Icons.home)),
-    ItemBar("状态管理", const StatePage(), const Icon(Icons.list)),
-    ItemBar("GetX", const GetXPage(), const Icon(Icons.label_outline_rounded)),
-    ItemBar("设置", const SettingPage(), const Icon(Icons.settings))
+    ItemBar('首页', const HomePage(), const Icon(Icons.home)),
+    ItemBar('状态管理', const StatePage(), const Icon(Icons.list)),
+    ItemBar('GetX', const GetXPage(), const Icon(Icons.label_outline_rounded)),
+    ItemBar('设置', const SettingPage(), const Icon(Icons.settings))
   ];
 
   @override

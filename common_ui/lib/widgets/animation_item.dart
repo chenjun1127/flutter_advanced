@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class AnimationItem extends StatefulWidget {
   const AnimationItem({
-    Key? key,
+    super.key,
     this.child,
     this.scale = 1.2,
     this.beginScale = 1,
-  }) : super(key: key);
+  });
   final Widget? child;
   final double scale;
   final double beginScale;

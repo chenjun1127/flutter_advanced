@@ -1,4 +1,3 @@
-import 'package:biz_lib/biz_lib.dart';
 import 'package:common_ui/common_ui.dart';
 import 'package:common_ui/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class Demo26 extends StatelessWidget {
       child: Center(
         child: _buildButton(() {
           _addOverlay(context, 0);
-        }, "添加第1个 Overlay", width: 160, color: Colors.deepOrangeAccent),
+        }, '添加第1个 Overlay', width: 160, color: Colors.deepOrangeAccent),
       ),
     );
   }
@@ -37,13 +36,13 @@ class Demo26 extends StatelessWidget {
             children: <Widget>[
               _buildButton(() {
                 _addOverlay(context, index);
-              }, "添加1个相同 key 的 Overlay"),
+              }, '添加1个相同 key 的 Overlay'),
               _buildButton(() {
                 _addOverlay(context, 5);
-              }, "添加1个不同 key 的 Overlay"),
+              }, '添加1个不同 key 的 Overlay'),
               _buildButton(_printOverlayList, '查看所有的 Overlay'),
               _buildButton(() {
-                _removeOverlayByKey("Overlay-0");
+                _removeOverlayByKey('Overlay-0');
               }, '删除指定 key 的 Overlay'),
               _buildButton(_voidRemoveAllOverlay, '删除所有的 Overlay'),
             ],
@@ -62,7 +61,7 @@ class Demo26 extends StatelessWidget {
   }
 
   void _printOverlayList() {
-    JLogger.i("所有 Overlay:${OverlayManager().entriesMap}");
+    JLogger.i('所有 Overlay:${OverlayManager().entriesMap}');
   }
 
   Widget _buildButton(VoidCallback onTap, String text, {Color? color, double? width}) {

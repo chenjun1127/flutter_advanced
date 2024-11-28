@@ -17,7 +17,7 @@ Future<bool?> centerDialog({
   Object? arguments, // 参数
   AlignmentGeometry? alignment,
 }) {
-  Widget _buildButton({required String text, VoidCallback? onTap, Color? color}) {
+  Widget buildButton({required String text, VoidCallback? onTap, Color? color}) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
@@ -40,7 +40,7 @@ Future<bool?> centerDialog({
       padding: const EdgeInsets.fromLTRB(30, 35, 30, 20),
       child: Builder(builder: (BuildContext context) {
         return Text(
-          title?.call() ?? "title",
+          title?.call() ?? 'title',
           style: FontStyle.defaultTitle.copyWith(fontSize: 24, color: const Color.fromRGBO(226, 228, 228, 1)),
           textAlign: TextAlign.center,
         );
@@ -74,7 +74,7 @@ Future<bool?> centerDialog({
   if (cancelText != null) {
     flexList.add(
       Expanded(
-        child: _buildButton(
+        child: buildButton(
           text: cancelText,
           color: Colors.white,
           onTap: () {
@@ -93,7 +93,7 @@ Future<bool?> centerDialog({
   if (okText != null) {
     flexList.add(
       Expanded(
-        child: _buildButton(text: okText, onTap: ok, color: const Color.fromRGBO(205, 167, 99, 1)),
+        child: buildButton(text: okText, onTap: ok, color: const Color.fromRGBO(205, 167, 99, 1)),
       ),
     );
   }
@@ -108,7 +108,7 @@ Future<bool?> centerDialog({
   return showDialog<bool>(
     context: context,
     barrierDismissible: barrierDismissible,
-    routeSettings: RouteSettings(name: "centerDialog", arguments: arguments),
+    routeSettings: RouteSettings(name: 'centerDialog', arguments: arguments),
     builder: (BuildContext context) {
       return AnimatedDialogContainer(
         child: AlertDialog(

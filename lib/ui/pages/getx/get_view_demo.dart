@@ -9,7 +9,7 @@ class GetViewDemo extends GetView<AwesomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("GetView Demo")),
+      appBar: AppBar(title: const Text('GetView Demo')),
       body: Obx(() => Center(child: Text(controller.title))),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

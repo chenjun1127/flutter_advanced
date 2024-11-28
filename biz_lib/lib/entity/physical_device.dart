@@ -1,8 +1,9 @@
 import 'package:biz_lib/entity/base_device.dart';
 
 class PhysicalDevice extends BaseDevice<PhysicalDevice> {
-  PhysicalDevice({String? deviceId, String? deviceName, String? createTime, int? value, int? type, this.desc})
-      : super(deviceId: deviceId, deviceName: deviceName, createTime: createTime, value: value, type: type);
+  // PhysicalDevice({String? deviceId, String? deviceName, String? createTime, int? value, int? type, this.desc})
+  //     : super(deviceId: deviceId, deviceName: deviceName, createTime: createTime, value: value, type: type);
+  PhysicalDevice({super.deviceId, super.deviceName, super.createTime, super.value, super.type, this.desc});
 
   PhysicalDevice.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
     desc = json['desc'];

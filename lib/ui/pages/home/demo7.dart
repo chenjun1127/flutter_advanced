@@ -6,15 +6,18 @@ import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 class Demo7 extends StatefulWidget {
   const Demo7({
-    Key? key,
+    super.key,
     this.bigCircleRadius = 160,
     this.smallCircleRadius = 60,
     this.pointCircleSize = 50,
     this.hue = 0,
     this.saturation = 100,
-  }) : super(key: key);
+  });
+
   static String title = 'CustomPainter Color';
   static String routeName = 'demo7';
   final double? bigCircleRadius;
@@ -52,25 +55,33 @@ class _Demo7State extends State<Demo7> {
   }
 
   Future<void> refreshLocation() async {
-    final double h = currentAngle;
-    final double thickValue = (currentSaturation - 0) / (100 - 0) * circleThickness;
-    final double realRadius = thickValue + widget.smallCircleRadius!;
-    final double x1 = bigCircleRadius + (realRadius - widget.pointCircleSize! ~/ 2) * cos((h - 90) * pi / 180);
-    final double y1 = bigCircleRadius + (realRadius - widget.pointCircleSize! ~/ 2) * sin((h - 90) * pi / 180);
-    finalColor = getColorFromHSL(currentAngle, currentSaturation);
-    setState(() {
-      x = (x1 - widget.pointCircleSize! ~/ 2).toDouble();
-      y = (y1 - widget.pointCircleSize! ~/ 2).toDouble();
+    // 使用 WidgetsBinding 来确保在 UI 渲染完成后获取 context
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (_scaffoldKey.currentContext == null) {
+        JLogger.w('Scaffold context is null!');
+        return;
+      }
+      final double h = currentAngle;
+      final double thickValue = (currentSaturation - 0) / (100 - 0) * circleThickness;
+      final double realRadius = thickValue + widget.smallCircleRadius!;
+      final double x1 = bigCircleRadius + (realRadius - widget.pointCircleSize! ~/ 2) * cos((h - 90) * pi / 180);
+      final double y1 = bigCircleRadius + (realRadius - widget.pointCircleSize! ~/ 2) * sin((h - 90) * pi / 180);
+      finalColor = getColorFromHSL(currentAngle, currentSaturation);
+      setState(() {
+        x = (x1 - widget.pointCircleSize! ~/ 2).toDouble();
+        y = (y1 - widget.pointCircleSize! ~/ 2).toDouble();
+      });
+      JLogger.i('计算得到坐标:x:$x,y:$y,currentSaturation:$currentSaturation,realRadius:$realRadius');
+      await loadImg(_scaffoldKey.currentContext!);
+      await _updateColor();
     });
-    JLogger.i("计算得到坐标:x:$x,y:$y,currentSaturation:$currentSaturation,realRadius:$realRadius");
-    await loadImg(context);
-    await _updateColor();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("CustomPainter Color")),
+      appBar: AppBar(title: const Text('CustomPainter Color')),
+      key: _scaffoldKey,
       persistentFooterButtons: <Widget>[
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +95,7 @@ class _Demo7State extends State<Demo7> {
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text("当前生成颜色:$finalColor2"),
+                  child: Text('当前生成颜色:$finalColor2'),
                 ),
               ],
             ),
@@ -189,7 +200,7 @@ class _Demo7State extends State<Demo7> {
     } else if (distance < smallRadius + pointRadius) {
       radius = smallRadius + pointRadius;
     }
-    JLogger.i("centerX:$centerX,centerY:$centerY:pointRadius:$pointRadius:radius:$radius");
+    JLogger.i('centerX:$centerX,centerY:$centerY:pointRadius:$pointRadius:radius:$radius');
     Offset currentPosition;
     if (radius != null) {
       //触摸点位移到圆心坐标
@@ -250,7 +261,7 @@ class _Demo7State extends State<Demo7> {
     } else {
       ///更新S的值
       currentSaturation = (d - smallCircleRadius) / circleThickness * (100 - 0) + widget.pointCircleSize! ~/ 2;
-      JLogger.i("currentSaturation:$currentSaturation");
+      JLogger.i('currentSaturation:$currentSaturation');
       return rotation;
     }
   }
@@ -313,43 +324,46 @@ class _Demo7State extends State<Demo7> {
     final img.Image? photo = img.decodeImage(pngBytes);
     final int pixelX = (x + widget.pointCircleSize! ~/ 2).toInt();
     final int pixelY = (y + widget.pointCircleSize! ~/ 2).toInt();
-    final int pixel32 = photo!.getPixelSafe(pixelX, pixelY);
-    final int argb = _abgrToArgb(pixel32);
+    final img.Pixel pixel = photo!.getPixelSafe(pixelX, pixelY);
+    final int red = pixel.r.toInt();
+    final int green = pixel.g.toInt();
+    final int blue = pixel.b.toInt();
+    final int alpha = pixel.a.toInt();
+    final int argb = (alpha << 24) | (red << 16) | (green << 8) | blue;
     final Color pixelColor = Color(argb);
     setState(() {
       finalColor2 = pixelColor;
     });
-    JLogger.i("=>:pixelColor:$pixelColor,finalColor:$finalColor,rotation:$currentAngle,saturation:$currentSaturation");
+    JLogger.i('=>:pixelColor:$pixelColor,finalColor:$finalColor,rotation:$currentAngle,saturation:$currentSaturation');
   }
 
   /// Uint32 编码过的像素颜色值（#AABBGGRR)转为（#AARRGGBB）
-  int _abgrToArgb(int argbColor) {
-    final int r = (argbColor >> 16) & 0xFF;
-    final int b = argbColor & 0xFF;
-    return (argbColor & 0xFF00FF00) | (b << 16) | r;
-  }
+  // int _abgrToArgb(int argbColor) {
+  //   final int r = (argbColor >> 16) & 0xFF;
+  //   final int b = argbColor & 0xFF;
+  //   return (argbColor & 0xFF00FF00) | (b << 16) | r;
+  // }
 
   Future<void> showImage() async {
     final ByteData? pngBytes = await _image?.toByteData(format: ui.ImageByteFormat.png);
-    if (context.mounted) {
-      return showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              'Canvas绘制生成的图片',
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w300,
-                color: Theme.of(context).primaryColor,
-                letterSpacing: 1.1,
-              ),
+
+    return showDialog<void>(
+      context: _scaffoldKey.currentContext!,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Canvas绘制生成的图片',
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w300,
+              color: Theme.of(context).primaryColor,
+              letterSpacing: 1.1,
             ),
-            content: Image.memory(Uint8List.view(pngBytes!.buffer)),
-          );
-        },
-      );
-    }
+          ),
+          content: Image.memory(Uint8List.view(pngBytes!.buffer)),
+        );
+      },
+    );
   }
 }
 

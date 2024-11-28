@@ -11,7 +11,7 @@ class ObxListDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Getx监听列表对象某一个值更新方法"),
+        title: const Text('Getx监听列表对象某一个值更新方法'),
       ),
       body: Container(
         color: Colors.green,
@@ -30,7 +30,7 @@ class ObxListDemo extends StatelessWidget {
   }
 
   void handleChange(String deviceId) {
-    JLogger.i("观察UI是否刷新:$deviceId");
+    JLogger.i('观察UI是否刷新:$deviceId');
     DeviceController.to.updateDeviceById4(deviceId);
   }
 
@@ -57,7 +57,7 @@ class ObxListDemo extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: const Text(
-                "改变value",
+                '改变value',
                 style: TextStyle(color: Colors.white, fontSize: 14),
               ),
             ),

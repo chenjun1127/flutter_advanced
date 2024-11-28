@@ -2,8 +2,9 @@ import 'package:biz_lib/entity/base_device.dart';
 import 'package:mobx/mobx.dart';
 
 class VirtualDevice extends BaseDevice<VirtualDevice> {
-  VirtualDevice({String? deviceId, String? deviceName, String? createTime, int? value, int? type, this.desc})
-      : super(deviceId: deviceId, deviceName: deviceName, createTime: createTime, value: value, type: type);
+  // VirtualDevice({String? deviceId, String? deviceName, String? createTime, int? value, int? type, this.desc})
+  //     : super(deviceId: deviceId, deviceName: deviceName, createTime: createTime, value: value, type: type);
+  VirtualDevice({super.deviceId, super.deviceName, super.createTime, super.value, super.type, this.desc});
 
   VirtualDevice.fromJson(Map<String, dynamic> json) : super.fromJson(json) {
     desc = json['desc'];

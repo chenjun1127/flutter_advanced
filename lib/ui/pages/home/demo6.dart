@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';
 
 class Demo6 extends StatefulWidget {
-  const Demo6({Key? key}) : super(key: key);
+  const Demo6({super.key});
   static String routeName = 'demo6';
   static String title = 'CustomPainter';
 
@@ -39,8 +39,8 @@ class _Demo6State extends State<Demo6> {
               width: 160,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                  backgroundColor: WidgetStateProperty.all(Colors.blue),
+                  shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                 ),
                 onPressed: () {
                   setState(() {

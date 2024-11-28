@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 class Demo4 extends StatefulWidget {
-  const Demo4({Key? key}) : super(key: key);
+  const Demo4({super.key});
   static const String routeName = 'demo4';
   static String title = 'SchedulerBinding';
 
@@ -21,7 +21,7 @@ class _Demo4State extends State<Demo4> {
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      JLogger.i("下一帧渲染完成");
+      JLogger.i('下一帧渲染完成');
     });
     super.initState();
   }

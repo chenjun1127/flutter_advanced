@@ -32,9 +32,9 @@ class Demo15 extends StatelessWidget {
 class CircularGradientBar extends StatelessWidget {
   const CircularGradientBar({
     this.strokeWidth = 8.0,
-    Key? key,
+    super.key,
     this.color = Colors.blue,
-  }) : super(key: key);
+  });
 
   final double strokeWidth;
   final Color color;
@@ -105,9 +105,8 @@ class CircularProgressBar extends StatelessWidget {
     required this.progress,
     this.strokeWidth = 8.0,
     this.color = Colors.blue,
-    Key? key,
-  })  : assert(progress >= 0 && progress <= 1, "Progress should be a value between 0 and 1"),
-        super(key: key);
+    super.key,
+  })  : assert(progress >= 0 && progress <= 1, 'Progress should be a value between 0 and 1');
   final double progress;
   final double strokeWidth;
   final Color color;

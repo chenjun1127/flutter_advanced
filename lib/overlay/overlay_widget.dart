@@ -48,7 +48,7 @@ class OverlayWidgetState extends State<OverlayWidget> {
   }
 
   void startTimer() {
-    JLogger.i("${widget.overlayKey}是否支持倒计时关闭：${widget.isSupportAutoClos}");
+    JLogger.i('${widget.overlayKey}是否支持倒计时关闭：${widget.isSupportAutoClos}');
     if (widget.isSupportAutoClos) {
       timer?.cancel();
       timer = Timer(Duration(seconds: widget.seconds), cancelHandle);
@@ -56,7 +56,7 @@ class OverlayWidgetState extends State<OverlayWidget> {
   }
 
   void cancelHandle() {
-    JLogger.i("${widget.overlayKey} overlay 倒计时回调");
+    JLogger.i('${widget.overlayKey} overlay 倒计时回调');
     widget.removeFunction?.call(widget.overlayKey);
   }
 

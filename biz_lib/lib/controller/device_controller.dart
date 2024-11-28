@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-
+import 'package:common_lib/common_lib.dart';
 import 'package:biz_lib/biz_lib.dart';
 import 'package:biz_lib/entity/physical_device.dart';
 
@@ -10,7 +10,7 @@ class DeviceController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    JLogger.d("DeviceController onInit");
+    JLogger.d('DeviceController onInit');
     createAndProcessDeviceList();
   }
 

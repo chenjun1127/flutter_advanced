@@ -88,7 +88,7 @@ class _BuildScrollBarState extends State<_BuildScrollBar> {
       setState(() {
         _progress = _scrollController.offset / _scrollController.position.maxScrollExtent;
       });
-      JLogger.i("fractionOfThumb:$_fractionOfThumb index:$_index progress:$_progress");
+      JLogger.i('fractionOfThumb:$_fractionOfThumb index:$_index progress:$_progress');
     }
   }
 

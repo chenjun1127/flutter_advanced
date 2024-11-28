@@ -1,4 +1,4 @@
-import 'package:collection/collection.dart';
+import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced/routes/animate_route.dart';
 import 'package:flutter_advanced/routes/route_type.dart';
@@ -11,8 +11,8 @@ class PageScaffold extends StatefulWidget {
     required this.title,
     required this.body,
     this.padding = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String title;
   final Widget body;
@@ -64,7 +64,7 @@ class Page {
 }
 
 class ListPage extends StatelessWidget {
-  const ListPage({required this.children, Key? key}) : super(key: key);
+  const ListPage({required this.children, super.key});
 
   final List<Page> children;
 
@@ -76,7 +76,7 @@ class ListPage extends StatelessWidget {
   List<Widget> _generateItem(BuildContext context) {
     return children
         .mapIndexed((int index, Page page) => ListTile(
-            title: Text("demo${index + 1} - ${page.title}"),
+            title: Text('demo${index + 1} - ${page.title}'),
             trailing: const Icon(Icons.keyboard_arrow_right),
             onTap: () => _onTap(context, index)))
         .toList();
@@ -85,9 +85,9 @@ class ListPage extends StatelessWidget {
   void _onTap(BuildContext context, int index) {
     if (index == 0) {
       Navigator.pushNamed(context, Demo1.routeName, arguments: <String, dynamic>{
-        "name": "张三",
-        "from": "普通路由传参数",
-        "routeType": RouteType.bottomToTop,
+        'name': '张三',
+        'from': '普通路由传参数',
+        'routeType': RouteType.bottomToTop,
       });
     } else if (index == 1) {
       Navigator.push(
@@ -104,11 +104,11 @@ class ListPage extends StatelessWidget {
             return Page(Demo3.routeName, Demo3.title, const Demo3()).builder(context);
           },
           settings: const RouteSettings(
-            name: "demo3",
+            name: 'demo3',
             arguments: <String, dynamic>{
-              "name": "demo3",
-              "from": "支持带参数的路由动画从下到上出现",
-              "routeType": RouteType.bottomToTop,
+              'name': 'demo3',
+              'from': '支持带参数的路由动画从下到上出现',
+              'routeType': RouteType.bottomToTop,
             },
           ),
         ),

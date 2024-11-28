@@ -6,8 +6,8 @@ import 'package:flutter_advanced/ui/pages/state/value_notifier_widget.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';
 
 class StreamSubscriptionWidget extends StatefulWidget {
-  const StreamSubscriptionWidget({Key? key}) : super(key: key);
-  static const String routeName = "stream_subscription_widget";
+  const StreamSubscriptionWidget({super.key});
+  static const String routeName = 'stream_subscription_widget';
 
   @override
   State<StreamSubscriptionWidget> createState() => _StreamSubscriptionWidgetState();
@@ -19,7 +19,7 @@ class _StreamSubscriptionWidgetState extends State<StreamSubscriptionWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("StreamSubscription 的基本使用")),
+      appBar: AppBar(title: const Text('StreamSubscription 的基本使用')),
       body: BaseContainer(
         child: Column(
           children: <Widget>[
@@ -35,11 +35,11 @@ class _StreamSubscriptionWidgetState extends State<StreamSubscriptionWidget> {
               height: 48,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
+                  backgroundColor: WidgetStateProperty.all(Colors.blue),
+                  shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
                 ),
                 onPressed: () {
-                  userInfoNotifier.setUserInfo("Tony", 32);
+                  userInfoNotifier.setUserInfo('Tony', 32);
                 },
                 child: const Text('ValueNotifier触发通知改变'),
               ),
@@ -50,8 +50,8 @@ class _StreamSubscriptionWidgetState extends State<StreamSubscriptionWidget> {
               height: 48,
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
+                  backgroundColor: WidgetStateProperty.all(Colors.blue),
+                  shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
                 ),
                 onPressed: () {
                   final UserInfo userInfo = userInfoNotifier.value;
@@ -76,7 +76,7 @@ class _StreamSubscriptionWidgetState extends State<StreamSubscriptionWidget> {
 }
 
 class UserInfoNotifier extends ValueNotifier<UserInfo> {
-  UserInfoNotifier(UserInfo userInfo) : super(userInfo);
+  UserInfoNotifier(super.userInfo);
 
   void setUserInfo(String name, int age) {
     value.name = name;

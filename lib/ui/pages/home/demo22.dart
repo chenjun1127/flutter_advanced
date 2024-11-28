@@ -5,7 +5,7 @@ import 'package:common_ui/widgets/animation_item.dart';
 import 'package:flutter/material.dart';
 
 class Demo22 extends StatefulWidget {
-  const Demo22({Key? key}) : super(key: key);
+  const Demo22({super.key});
   static String title = 'Draggable Demo 1';
   static String routeName = 'demo22';
 
@@ -52,9 +52,9 @@ class Demo22State extends State<Demo22> {
 
   List<Widget> buildItems(List<DataBean> list, DataBean dragData) {
     final List<Widget> items = <Widget>[];
-    list.forEach((DataBean data) {
+    for (DataBean data in list) {
       items.add(dragTarget(data));
-    });
+    }
 
     items.add(draggableItem(_dragData));
     return items;
@@ -109,7 +109,7 @@ class Demo22State extends State<Demo22> {
 
   // 接收方
   Widget dragTarget(DataBean data) {
-    JLogger.i("data==$data");
+    JLogger.i('data==$data');
     return Positioned(
       left: data.offset.dx,
       top: data.offset.dy,
@@ -119,7 +119,7 @@ class Demo22State extends State<Demo22> {
           return baseItem(data, draggable: false);
         },
         //返回是否接收 参数为Draggable的data 方向相同则允许接收
-        onWillAccept: (Object? acceptData) {
+        onWillAcceptWithDetails: (Object? acceptData) {
           if (acceptData is DataBean) {
             JLogger.i('=== onWillAccept: ${acceptData.title}----${data.title}');
             return acceptData.title.compareTo(data.title) == 0;
@@ -127,15 +127,15 @@ class Demo22State extends State<Demo22> {
           return false;
         },
 
-        onAccept: (DataBean acceptData) {
+        onAcceptWithDetails: (DragTargetDetails<DataBean> acceptData) {
           //接收方法
-          JLogger.i('=== onAccept: ${acceptData.title}==>${data.title}');
+          JLogger.i('=== onAccept: ${acceptData.data.title}==>${data.title}');
           setState(() {
             //修改数据进行重绘
             // 交换颜色 并生成随机方向
             final int index = _targetDataList.indexOf(data);
             final Color tmpColor = data.color;
-            data.color = acceptData.color;
+            data.color = acceptData.data.color;
             _targetDataList.remove(data);
             _targetDataList.insert(index, data);
             _dragData.title = randomTitle();

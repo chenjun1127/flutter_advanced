@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class BaseContainer extends StatelessWidget {
-  const BaseContainer({this.child, EdgeInsets? padding, Key? key})
-      : padding = padding ?? defaultPadding,
-        super(key: key);
+  const BaseContainer({this.child, EdgeInsets? padding, super.key})
+      : padding = padding ?? defaultPadding;
   final Widget? child;
   final EdgeInsets? padding;
   static const EdgeInsets defaultPadding = EdgeInsets.all(10);

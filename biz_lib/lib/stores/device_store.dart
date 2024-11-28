@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:biz_lib/entity/virtual_device.dart';
-import 'package:collection/collection.dart';
+import 'package:common_lib/common_lib.dart';
+
 import 'package:mobx/mobx.dart';
 
 part 'device_store.g.dart';

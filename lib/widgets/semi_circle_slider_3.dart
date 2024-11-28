@@ -54,11 +54,11 @@ class _SemiCircleSlider3State extends State<SemiCircleSlider3> {
 
   @override
   Widget build(BuildContext context) {
-    final double _value = widget.value;
-    final double calcValue = CalcUtils.mapValue(_value, widget.min, widget.max, widget.min, arcAngle);
-    final double calcProgress = CalcUtils.mapValue(_value, widget.min, widget.max, startAngle, startAngle + arcAngle);
+    final double value = widget.value;
+    final double calcValue = CalcUtils.mapValue(value, widget.min, widget.max, widget.min, arcAngle);
+    final double calcProgress = CalcUtils.mapValue(value, widget.min, widget.max, startAngle, startAngle + arcAngle);
     // final double t = calcProgress > 360 ? calcProgress - 360 : calcProgress;
-    JLogger.i("亮度映射角度：$calcValue,亮度映射进度：$calcProgress:$_value");
+    JLogger.i('亮度映射角度：$calcValue,亮度映射进度：$calcProgress:$value');
     return GestureDetector(
       onVerticalDragDown: (DragDownDetails details) {
         setState(() {

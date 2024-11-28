@@ -24,7 +24,7 @@ class _Demo17State extends State<Demo17> {
       child: CustomPaint(
         size: const Size(400, 400),
         painter: ArcTextPainter(
-          getVisibleText("我们一起来学习Flutter", textStyle, 220),
+          getVisibleText('我们一起来学习Flutter', textStyle, 220),
           textStyle: textStyle,
           startAngle: math.pi * 135 / 180,
           sweepAngle: math.pi * 270 / 180,

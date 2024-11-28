@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';
 
 class Demo5 extends StatefulWidget {
-  const Demo5({Key? key}) : super(key: key);
+  const Demo5({super.key});
   static String routeName = 'demo5';
   static String title = 'Flutter 屏幕适配方案';
 
@@ -20,7 +20,7 @@ class _Demo5State extends State<Demo5> {
           width: 400.dpx,
           height: 400.dpx,
           color: Colors.red,
-          child: const Text("dpx 适配"),
+          child: const Text('dpx 适配'),
         ),
       ),
     );

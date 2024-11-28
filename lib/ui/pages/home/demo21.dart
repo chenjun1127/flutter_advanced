@@ -19,7 +19,7 @@ class _Demo21State extends State<Demo21> {
 
   Widget _buildButton() {
     return Hero(
-      tag: "heroTag",
+      tag: 'heroTag',
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {
@@ -36,7 +36,7 @@ class _Demo21State extends State<Demo21> {
             color: Colors.blue,
           ),
           child: Text(
-            "To second page",
+            'To second page',
             style: FontStyle.defaultTitle.copyWith(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
           ),
         ),
@@ -56,7 +56,7 @@ class SecondPage extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: Hero(
-          tag: "heroTag",
+          tag: 'heroTag',
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
@@ -71,7 +71,7 @@ class SecondPage extends StatelessWidget {
                 color: Colors.red,
               ),
               child: Text(
-                "Back",
+                'Back',
                 style: FontStyle.defaultTitle.copyWith(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
               ),
             ),

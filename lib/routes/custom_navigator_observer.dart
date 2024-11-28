@@ -1,4 +1,5 @@
-import 'package:common_lib/common_lib.dart';
+
+import 'package:biz_lib/biz_lib.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced/utils/routes_utils.dart';
 
@@ -13,7 +14,7 @@ class CustomNavigatorObserver extends NavigatorObserver {
     if (routeName != null) {
       RouteController.to.setCurrentRoute(routeName);
       RoutesUtils.addRoutes(route);
-      JLogger.i("didPush: route=>$routeName previousRoute=>$previousRouteName");
+      JLogger.i('didPush: route=>$routeName previousRoute=>$previousRouteName');
     }
     currentRoute = route;
   }
@@ -27,14 +28,14 @@ class CustomNavigatorObserver extends NavigatorObserver {
       RouteController.to.setCurrentRoute(previousRouteName);
     }
     currentRoute = previousRoute;
-    JLogger.i("didPop: route=>${route.settings.name} previousRoute=>$previousRouteName");
+    JLogger.i('didPop: route=>${route.settings.name} previousRoute=>$previousRouteName');
   }
 
   @override
   void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
     super.didRemove(route, previousRoute);
     RoutesUtils.removeRoute(route.settings.name);
-    JLogger.i("didRemove: route=>${route.settings.name} previousRoute=>${previousRoute?.settings.name}");
+    JLogger.i('didRemove: route=>${route.settings.name} previousRoute=>${previousRoute?.settings.name}');
   }
 
   @override
@@ -46,6 +47,6 @@ class CustomNavigatorObserver extends NavigatorObserver {
       RouteController.to.setCurrentRoute(newRouteName);
       RoutesUtils.addRoutes(newRoute);
     }
-    JLogger.i("didReplace: newRoute=>$newRouteName previousRoute=>${oldRoute?.settings.name}");
+    JLogger.i('didReplace: newRoute=>$newRouteName previousRoute=>${oldRoute?.settings.name}');
   }
 }

@@ -71,12 +71,12 @@ class DraggableItem extends StatefulWidget {
     this.item, {
     required this.feedbackWidth,
     required this.feedbackHeight,
-    Key? key,
+    super.key,
     this.exchangeItem,
     this.onStartDrag,
     this.onEndDrag,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final MenuData item;
   final double feedbackWidth;
@@ -124,16 +124,16 @@ class DraggableItemState extends State<DraggableItem> {
             },
           );
         },
-        onWillAccept: (MenuData? moveData) {
+        onWillAcceptWithDetails: (DragTargetDetails<MenuData>? moveData) {
           JLogger.i('=== onWillAccept: $moveData ==> $value');
 
           final bool accept = moveData != null;
           if (accept) {
-            widget.exchangeItem?.call(moveData, value);
+            widget.exchangeItem?.call(moveData.data, value);
           }
           return accept;
         },
-        onAccept: (MenuData moveData) {
+        onAcceptWithDetails: (DragTargetDetails<MenuData> moveData) {
           JLogger.i('=== onAccept: $moveData ==> $value');
         },
         onLeave: (MenuData? moveData) {
@@ -154,9 +154,9 @@ class MenuData {
 class BaseItem extends StatelessWidget {
   const BaseItem(
     this.item, {
-    Key? key,
+    super.key,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final MenuData item;
   final VoidCallback? onPressed;

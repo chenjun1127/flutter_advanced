@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced/widgets/base_container.dart';
 
 class Demo3 extends StatelessWidget {
-  const Demo3({Key? key}) : super(key: key);
+  const Demo3({super.key});
   static String routeName = 'demo3';
   static String title = '从下至少动画路由带参数';
 
@@ -10,7 +10,7 @@ class Demo3 extends StatelessWidget {
   Widget build(BuildContext context) {
     final RouteSettings? routeSettings = ModalRoute.of(context)?.settings;
     return BaseContainer(
-      child: Text("${routeSettings!.name.toString()}---${routeSettings.arguments.toString()}"),
+      child: Text('${routeSettings!.name.toString()}---${routeSettings.arguments.toString()}'),
     );
   }
 }

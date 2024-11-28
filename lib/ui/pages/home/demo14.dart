@@ -21,14 +21,14 @@ class Demo14 extends StatelessWidget {
               color: Colors.red,
               child: GestureDetector(
                 // 替换 GestureDetector
-                onTap: () => JLogger.i("2"),
+                onTap: () => JLogger.i('2'),
                 child: Container(
                   width: 200,
                   height: 200,
                   color: Colors.teal,
                   alignment: Alignment.center,
                   child: GestureDetector(
-                    onTap: () => JLogger.i("1"),
+                    onTap: () => JLogger.i('1'),
                     child: Container(
                       width: 50,
                       height: 50,
@@ -43,14 +43,14 @@ class Demo14 extends StatelessWidget {
               color: Colors.transparent,
               child: Listener(
                 // 替换 GestureDetector
-                onPointerUp: (PointerUpEvent e) => JLogger.i("2"),
+                onPointerUp: (PointerUpEvent e) => JLogger.i('2'),
                 child: Container(
                   width: 200,
                   height: 200,
                   color: Colors.green,
                   alignment: Alignment.center,
                   child: GestureDetector(
-                    onTap: () => JLogger.i("1"),
+                    onTap: () => JLogger.i('1'),
                     child: Container(
                       width: 50,
                       height: 50,
@@ -64,14 +64,14 @@ class Demo14 extends StatelessWidget {
             Container(
               child: customGestureDetector(
                 // 替换 GestureDetector
-                onTap: () => JLogger.i("2"),
+                onTap: () => JLogger.i('2'),
                 child: Container(
                   width: 200,
                   height: 200,
                   color: Colors.red,
                   alignment: Alignment.center,
                   child: GestureDetector(
-                    onTap: () => JLogger.i("1"),
+                    onTap: () => JLogger.i('1'),
                     child: Container(
                       width: 50,
                       height: 50,

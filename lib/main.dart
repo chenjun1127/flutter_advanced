@@ -1,5 +1,4 @@
 import 'package:biz_lib/biz_lib.dart';
-import 'package:common_lib/common_lib.dart';
 import 'package:common_ui/common_ui.dart';
 import 'package:common_ui/generated/locales.g.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ void main() {
       PaintingBinding.instance.imageCache.maximumSizeBytes = 40 << 20;
       FPSUtils().addTimingsCallback();
       await BizLib.init(navigatorKey: navigatorKey);
-      CommonUi.setOnTap(() => JLogger.i("回调测试-controller是否注册:${Get.isRegistered<DeviceController>()}"));
+      CommonUi.setOnTap(() => JLogger.i('回调测试-controller是否注册:${Get.isRegistered<DeviceController>()}'));
     },
   );
 }
@@ -29,7 +28,7 @@ void main() {
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -51,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       onGenerateRoute: Routes.onGenerateRoute,
       initialRoute: HomeLayout.routeName,
       home: const HomeLayout(),
-      locale: const Locale(LanguageConst.simple_chinese),
+      locale: const Locale(LanguageConst.simpleChinese),
       // 默认语言
       fallbackLocale: const Locale(LanguageConst.english),
       // 后备语言

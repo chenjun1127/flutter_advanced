@@ -66,7 +66,7 @@ class _FadeInFromBottomTextWidgetState extends State<FadeInFromBottomTextWidget>
       children: <Widget>[
         ElevatedButton(
           onPressed: _startAnimation,
-          child: const Text("点击"),
+          child: const Text('点击'),
         ),
         const SizedBox(height: 20),
         if (_isVisible)

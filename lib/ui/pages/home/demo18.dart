@@ -35,7 +35,7 @@ class _Demo18State extends State<Demo18> {
       setState(() {
         _progress = _scrollController.offset / _scrollController.position.maxScrollExtent;
       });
-      JLogger.i("fractionOfThumb:$_fractionOfThumb index:$_index progress:$_progress");
+      JLogger.i('fractionOfThumb:$_fractionOfThumb index:$_index progress:$_progress');
     }
   }
 
@@ -59,7 +59,7 @@ class _Demo18State extends State<Demo18> {
       children: <Widget>[
         ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(title: Text("$index"));
+            return ListTile(title: Text('$index'));
           },
           physics: const BouncingScrollPhysics(),
           controller: _scrollController,

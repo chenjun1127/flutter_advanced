@@ -19,7 +19,7 @@ class _Demo19State extends State<Demo19> {
         controller: scrollController,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(title: Text("$index"));
+          return ListTile(title: Text('$index'));
         },
         itemCount: 100,
       );

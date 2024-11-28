@@ -66,7 +66,7 @@ class _VerticalColorSliderState extends State<VerticalColorSlider> {
     _y = 1 - value;
     // 将 0-1的 值映射到 0-360
     final double originalValue = getOriginValue(value).clamp(widget.min, widget.max);
-    JLogger.i("计算值为:$value,映射后的值为:$originalValue");
+    JLogger.i('计算值为:$value,映射后的值为:$originalValue');
     return originalValue;
   }
 

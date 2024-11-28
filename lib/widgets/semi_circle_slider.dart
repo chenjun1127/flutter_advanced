@@ -7,7 +7,7 @@ typedef VoidDoubleCallBack = void Function(double progress);
 
 class SemiCircleSlider extends StatefulWidget {
   const SemiCircleSlider({
-    Key? key,
+    super.key,
     this.value = 0,
     this.radius = 150,
     this.thickness = 50,
@@ -15,7 +15,7 @@ class SemiCircleSlider extends StatefulWidget {
     this.backColor = const Color(0xffBBBBBB),
     this.sliderColor = Colors.white,
     this.onChange,
-  }) : super(key: key);
+  });
   final double value;
   final double? radius;
   final double? thickness;
@@ -86,7 +86,7 @@ class SemiCircleSliderState extends State<SemiCircleSlider> {
     final double dx = position.dx - centerX;
     final double dy = position.dy - centerY;
     final double distance = math.sqrt(dx * dx + dy * dy); // 计算手势点与圆环中心的距离
-    JLogger.i("distance----$distance,$radius");
+    JLogger.i('distance----$distance,$radius');
     if (distance >= radius && distance <= widget.radius! && isAngleInRange(dx, dy)) {
       return true;
     } else {
@@ -131,8 +131,8 @@ class SemiCircleSliderState extends State<SemiCircleSlider> {
       currentProgress = value + (1 - 0.875);
     }
     final double progress = currentProgress / (0.125 + 0.625) * 100;
-    JLogger.i("当前进度为：$progress");
-    JLogger.i("--value==2=$value,angle====$angle");
+    JLogger.i('当前进度为：$progress');
+    JLogger.i('--value==2=$value,angle====$angle');
     widget.onChange?.call(progress);
   }
 

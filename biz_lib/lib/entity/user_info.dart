@@ -1,5 +1,5 @@
 class UserInfo {
-  String? name = "Jack";
+  String? name = 'Jack';
   int? age = 20;
 
   @override

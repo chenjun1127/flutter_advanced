@@ -32,20 +32,20 @@ class PainterArc extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Offset center = Offset(size.width / 2, size.height / 2);
     final Rect rect = Rect.fromCircle(center: center, radius: size.width / 2);
-    final double _startAngle = toRadian(startAngle - 90);
-    final double _sweepAngle = toRadian(sweepAngle);
+    final double angleStart = toRadian(startAngle - 90);
+    final double angleSweep = toRadian(sweepAngle);
     //起始角度为 0，结束角度为 1.5 * pi，这里的 pi 为 180 度（即 1.5708 rad）,GradientRotation 旋转角度让渐变从 0.75 * pi 开始，由于渐变颜色过渡有个裂开，这里剪掉 0.03 * pi 的部分，最终得到 0.72 * pi
     final SweepGradient gradient = SweepGradient(
-      endAngle: _sweepAngle,
+      endAngle: angleSweep,
       colors: colors,
-      transform: GradientRotation(_startAngle * math.pi),
+      transform: GradientRotation(angleStart * math.pi),
       stops: stops,
     );
     final Paint paint = Paint()
       ..strokeWidth = thickness
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
-    if (_sweepAngle > 0) {
+    if (angleSweep > 0) {
       paint.shader = gradient.createShader(rect);
     }
 
@@ -59,13 +59,13 @@ class PainterArc extends CustomPainter {
     // 绘制背景
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
-      _startAngle,
+      angleStart,
       toRadian(defaultSweepAngle),
       false,
       paintBg,
     );
     // 绘制进度
-    canvas.drawArc(Rect.fromCircle(center: center, radius: radius), _startAngle, _sweepAngle, false, paint);
+    canvas.drawArc(Rect.fromCircle(center: center, radius: radius), angleStart, angleSweep, false, paint);
     // 计算坐标绘制圆上点
     final double x = size.width / 2 + radius * math.cos(toRadian((sweepAngle + startAngle) - 90));
     final double y = size.height / 2 + radius * math.sin(toRadian((sweepAngle + startAngle) - 90));

@@ -1,6 +1,5 @@
 import 'package:common_ui/common_ui.dart';
 import 'package:common_ui/iconfont/icon_font.dart';
-import 'package:common_ui/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {

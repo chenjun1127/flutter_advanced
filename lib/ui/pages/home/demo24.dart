@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
 
-import 'package:common_lib/common_lib.dart';
+import 'package:biz_lib/biz_lib.dart';
 import 'package:common_ui/styles/styles.dart';
 import 'package:common_ui/widgets/animation_item.dart';
 import 'package:common_ui/widgets/custom_snapshot.dart';
@@ -38,8 +38,8 @@ class _Demo24State extends State<Demo24> {
           CupertinoButton(
             child: Text('完成', style: FontStyle.defaultTitle.copyWith(color: Colors.white, fontSize: 18)),
             onPressed: () {
-              JLogger.i("点击拖动排序完成items:$items");
-              JLogger.i("imageMap:$imageMap");
+              JLogger.i('点击拖动排序完成items:$items');
+              JLogger.i('imageMap:$imageMap');
             },
           )
         ],

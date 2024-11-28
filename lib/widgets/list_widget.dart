@@ -1,4 +1,3 @@
-import 'package:biz_lib/biz_lib.dart';
 import 'package:common_ui/common_ui.dart';
 import 'package:common_ui/iconfont/icon_font.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +5,13 @@ import 'package:flutter/material.dart';
 class ListWidget extends StatelessWidget {
   const ListWidget({
     required this.children,
-    Key? key,
+    super.key,
     this.background,
     this.onTap,
     this.initItem,
     this.fontSize,
     this.fontColor,
-  }) : super(key: key);
+  });
   final List<String> children;
   final Color? background;
   final int? initItem;
@@ -63,7 +62,7 @@ class ListWidget extends StatelessWidget {
                         child: Center(
                           child: IconFont(
                             IconNames.model_done_1,
-                            color: "#${const Color(0xffCDA763).value.toRadixString(16)}",
+                            color: '#${const Color(0xffCDA763).value.toRadixString(16)}',
                             size: 32,
                           ),
                         ),

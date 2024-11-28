@@ -6,7 +6,7 @@ import 'package:flutter_advanced/ui/pages/state/stream_subscription_widget.dart'
 import 'package:flutter_advanced/ui/pages/state/value_notifier_widget.dart';
 
 class StatePage extends StatelessWidget {
-  const StatePage({Key? key}) : super(key: key);
+  const StatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
