@@ -19,6 +19,7 @@ analyzer:
 
 linter:
   rules:
+    always_declare_return_types: true
     always_use_package_imports: true                      # 强制使用包路径导入，统一导入格式
     library_private_types_in_public_api: false            # 允许在公共 API 中使用库私有类型
     prefer_const_constructors: true                       # 尽量使用 const 构造函数，优化性能
